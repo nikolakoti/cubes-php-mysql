@@ -55,14 +55,78 @@ JOIN
     categories as c on c.id = p.category_id;
 
 
--- Zadatak: Ubaciti proizvod bez kategorije i proizvod bez brenda, ubaciti brendove i kategorije bez proizvoda
+-- Zadatak: Ubaciti proizvod bez kategorije i proizvod bez brenda, ubaciti brendove i kategorije bez proizvoda 
 
 -- SQL LEFT JOIN
 -- Zadatak: Selektuj id proizvoda, naziv proizvoda, id kategorije i naziv kategorije  ZA SVE PROIZVODE I ONE KOJI NEMAJU KATEGORIJU
--- Zadatak: Selektuj id proizvoda, naziv proizvoda, id brenda i naziv brenda  ZA SVE PROIZVODE I ONE KOJI NEMAJU BREND
+SELECT 
+    products.id, products.title, products.category_id, 
+    categories.title AS category_title
+FROM
+    products 
+LEFT JOIN 
+    categories ON products.category_id = categories.id;
+-- Zadatak: Selektuj id proizvoda, naziv proizvoda, id brenda i naziv brenda  ZA SVE PROIZVODE I ONE KOJI NEMAJU BREND 
+SELECT 
+    p.id, 
+    p.title, 
+    b.id as brand_id,
+    b.title as brand_title
+FROM
+    products as p
+LEFT JOIN 
+    brands as b ON p.brand_id = b.id;
 -- Zadatak: Selektuj id proizvoda i naziv proizvoda za sve proizvode koji NEMAJU KATEGORIJU
 
+SELECT 
+    products.id, 
+    products.title, 
+    products.category_id, 
+    categories.id, 
+    categories.title
+FROM 
+    products 
+LEFT JOIN  
+    categories on products.category_id = categories.id
+WHERE 
+    categories.id IS NULL;
 -- SQL RIGHT JOIN
 
 -- Zadatak: Selektuj nazive kategorija koje nemaju proizvode
+SELECT 
+    categories.id, 
+    categories.title, 
+    products.id, 
+    products.category_id 
+FROM 
+    categories 
+LEFT JOIN 
+    products on categories.id = products.category_id 
+WHERE 
+    products.category_id IS NULL; 
+
+SELECT 
+    categories.id, 
+    categories.title, 
+    products.id, 
+    products.category_id 
+FROM 
+    products
+RIGHT JOIN 
+    categories on categories.id = products.category_id 
+WHERE 
+    products.id IS NULL;
+
 -- Zadatak: Selektuj nazive brendova koji nemaju proizvode
+
+SELECT 
+    brands.id, 
+    brands.title, 
+    products.id, 
+    products.category_id 
+FROM 
+    products
+RIGHT JOIN 
+    brands on brands.id = products.brand_id 
+WHERE 
+    products.id IS NULL;
