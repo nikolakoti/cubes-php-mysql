@@ -6,7 +6,7 @@ if ($link === false) {
 	die('MySQL Error: ' . mysqli_connect_error());
 }
 
-$result = mysqli_query($link, 'SELECT title AS naziv_proizvoda, quantity AS kolicina FROM `products`');
+$result = mysqli_query($link, 'SELECT * FROM `products`');
 
 if ($result === false) {
 	die('MySQL Error: ' . mysqli_error($link));
