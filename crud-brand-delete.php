@@ -1,33 +1,31 @@
 <?php 
 
+session_start();
+
+require_once __DIR__ . '/models/m_brands.php';
+
 if (empty($_GET['id'])) {
     die('morate proslediti id');
 } 
 
 $id = (int) $_GET['id']; 
 
-$link = mysqli_connect('127.0.0.1', 'cubes', 'cubes', 'cubesphp');
 
-if ($link === false) {
-	die('MySQL Error: ' . mysqli_connect_error());
-}
 
-$query = "SELECT * FROM brands WHERE id = '". mysqli_real_escape_string($link, $id)."'"; 
-
-$result = mysqli_query($link, $query) ; 
-
-if ($result === false) {
-	die('MySQL Error: ' . mysqli_error($link));
-}
-
-$brand = mysqli_fetch_assoc($result); 
+$brand = brandsFetchOneById($id);
 
 if (empty($brand)) {
-    die('Trazeni brend ne psotoji');
+    die('Trazeni brend ne postoji');
 }
 
-print_r($brand); 
-die();
+if (isset($_POST["task"]) && $_POST["task"] == "delete") {
+
+    brandsDeleteOneById($id);
+            
+    header('Location: /crud-brand-list.php'); 
+    die();
+	
+}
 
 
 
