@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 06, 2017 at 04:28 PM
+-- Generation Time: Nov 08, 2017 at 03:55 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -45,7 +45,7 @@ INSERT INTO `brands` (`id`, `title`, `website_url`) VALUES
 (4, 'Gorenje', ''),
 (5, 'HTC', ''),
 (6, 'Huawei', ''),
-(7, 'huawei aaa', 'http://cubes.edu.rs'),
+(7, 'HUAWEI', 'http://cubes.edu.rs'),
 (8, 'Samsung', ''),
 (9, 'Sony', ''),
 (16, 'Siemens', ''),
@@ -280,7 +280,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `categories`
 --
@@ -290,7 +290,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `polaznici`
 --
