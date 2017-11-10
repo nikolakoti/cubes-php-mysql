@@ -7,7 +7,7 @@ session_start();
 require_once __DIR__ . '/models/m_users.php'; 
 
 if (!isUserLoggedIn()) {
-    header('Location : /login.php'); 
+    header('Location: /login.php'); 
     die();
 }
 
