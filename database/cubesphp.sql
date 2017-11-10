@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 09, 2017 at 02:32 PM
+-- Host: localhost
+-- Generation Time: Nov 10, 2017 at 04:10 PM
 -- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -75,7 +75,8 @@ INSERT INTO `categories` (`id`, `title`, `description`, `group_id`) VALUES
 (5, 'Sporet', '', 2),
 (6, 'Fen za kosu', '', 2),
 (7, 'Laptop', '', 3),
-(8, 'Zvucnici', '', 8);
+(8, 'Zvucnici', '', 8),
+(9, 'Sporet', '', 2);
 
 -- --------------------------------------------------------
 
@@ -173,7 +174,6 @@ INSERT INTO `products` (`id`, `brand_id`, `title`, `description`, `specification
 (39, 1, 'iPhone6 S', 'iPhone6 S', '', '39999.99', 12, 1, 0, '0.00', '2016-03-21 18:00:00'),
 (40, 1, 'iPhone6 SE', 'iPhone6 SE', '', '37999.99', 11, 1, 0, '0.00', '2016-03-21 18:00:00'),
 (41, 1, 'iPhone5', 'iPhone5', '', '32999.99', 10, 1, 0, '0.00', '2016-03-21 18:00:00'),
-(42, NULL, 'Masina za sivenje', 'Masina za sivenje', 'Masina za sivenje', '1200.00', 1, NULL, 0, '0.00', '2017-11-15 06:22:22'),
 (43, NULL, 'Televizor 8x56p', 'Televizor 8x56p', NULL, '11800.00', 36, 2, 0, '0.00', '2017-11-17 00:00:00'),
 (44, 1, 'iPod Nano', 'iPod Nano', NULL, '9800.00', 3, NULL, 0, '0.00', '2017-11-23 12:23:31'),
 (45, 2, 'Pegla 1200W', 'Pegla 1200W', NULL, '3200.00', 1, 99, 0, '0.00', '2017-11-22 08:16:11');
@@ -283,43 +283,36 @@ ALTER TABLE `tags`
 --
 ALTER TABLE `brands`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT for table `polaznici`
 --
 ALTER TABLE `polaznici`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-
 --
 -- AUTO_INCREMENT for table `product_tags`
 --
 ALTER TABLE `product_tags`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
