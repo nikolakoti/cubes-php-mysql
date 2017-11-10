@@ -1,11 +1,18 @@
 <?php
 
-session_start();
+session_start(); 
+
+require_once __DIR__ . '/models/m_users.php'; 
+
+if (!isUserLoggedIn()) {
+    header('Location : /login.php'); 
+    die();
+}
 
 require_once __DIR__ . '/models/m_categories.php';
 require_once __DIR__ . '/models/m_groups.php';
 
-
+$groupList = groupsGetList();
 
 $formData = array(
     'title' => '',
@@ -36,18 +43,33 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
         //Validation 3
         //Validation 4
         //...
+    } else {//Ovaj else ide samo ako je polje obavezno
+		$formErrors["title"][] = "Polje naziv je obavezno";
+                
     }
 
     if (isset($_POST["group_id"]) && $_POST["group_id"] !== '') {
-        //Dodavanje parametara medju podatke u formi
-        $formData["group_id"] = $_POST["group_id"];
-
-        //Filtering 1
-        $formData["group_id"] = trim($formData["group_id"]);
-
-
-        $group_idPossibleValues = groupsFetchAll();
-    }
+		//Dodavanje parametara medju podatke u formi
+		$formData["group_id"] = $_POST["group_id"];
+		
+		//Filtering 1
+		$formData["group_id"] = trim($formData["group_id"]);
+		
+		$testGroup = groupsFetchOneById($formData['group_id']); 
+                
+                if (empty($testGroup)) {
+                    //nije pronadjena grupa po ID-ju
+                    $formErrors["group_id"][] = "Izabrali ste neodgovarajucu vrednost za polje group_id";
+                }
+                
+		
+		
+		//Validation 2
+		//Validation 3
+		//...
+	} else {//Ovaj else ide samo ako je polje obavezno
+		$formErrors["group_id"][] = "Polje group_id je obavezno";
+	}
 
     if (isset($_POST["description"]) && $_POST["description"] !== '') {
         //Dodavanje parametara medju podatke u formi
@@ -70,7 +92,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
     }
 }
 
-$groups = groupsFetchAll();
+
 
 require_once __DIR__ . '/views/layout/header.php';
 require_once __DIR__ . '/views/templates/t_crud-category-insert.php';
