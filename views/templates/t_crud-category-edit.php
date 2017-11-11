@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="post" class="form-horizontal">
+                <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
                     <input type="hidden" name="task" value="save">
 
                     <fieldset>

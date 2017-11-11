@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 10, 2017 at 04:10 PM
+-- Host: 127.0.0.1
+-- Generation Time: Nov 11, 2017 at 11:54 PM
 -- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -99,6 +99,37 @@ INSERT INTO `groups` (`id`, `title`) VALUES
 (3, 'Racunari'),
 (7, 'Racunarske komponente'),
 (8, 'Audio');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `section_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text,
+  `content` longtext,
+  `created_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `section_id`, `title`, `description`, `content`, `created_at`) VALUES
+(1, 1, '', NULL, NULL, NULL),
+(2, 2, '', NULL, NULL, NULL),
+(3, 3, '', NULL, NULL, NULL),
+(4, 4, '', NULL, NULL, NULL),
+(5, 5, '', NULL, NULL, NULL),
+(6, 3, 'aaaaa', '', '', '0000-00-00 00:00:00'),
+(7, 2, 'aaa', '', '', '0000-00-00 00:00:00'),
+(8, 2, 'bbbbbbbbbbb', '', '', '0000-00-00 00:00:00'),
+(9, 3, 'muykkmu', '', '', '0000-00-00 00:00:00'),
+(10, 3, 'Test', 'Test', 'Ovo je samo test', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -207,6 +238,28 @@ INSERT INTO `product_tags` (`id`, `product_id`, `tag_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sections`
+--
+
+CREATE TABLE `sections` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sections`
+--
+
+INSERT INTO `sections` (`id`, `title`) VALUES
+(1, 'Sport'),
+(2, 'Ljubav i Zdravlje'),
+(3, 'Hronika'),
+(4, 'Razonoda'),
+(5, 'Turizam');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tags`
 --
 
@@ -249,6 +302,13 @@ ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `section_id` (`section_id`);
+
+--
 -- Indexes for table `polaznici`
 --
 ALTER TABLE `polaznici`
@@ -269,6 +329,12 @@ ALTER TABLE `product_tags`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sections`
+--
+ALTER TABLE `sections`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tags`
 --
 ALTER TABLE `tags`
@@ -283,36 +349,55 @@ ALTER TABLE `tags`
 --
 ALTER TABLE `brands`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
 -- AUTO_INCREMENT for table `polaznici`
 --
 ALTER TABLE `polaznici`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
 --
 -- AUTO_INCREMENT for table `product_tags`
 --
 ALTER TABLE `product_tags`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `sections`
+--
+ALTER TABLE `sections`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
