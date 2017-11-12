@@ -86,4 +86,7 @@ function entityNameGetCount() {
 	$query = "SELECT COUNT(`id`) FROM `entityName`";
 	
 	return dbFetchColumn($query);
-}
+} 
+
+
+    

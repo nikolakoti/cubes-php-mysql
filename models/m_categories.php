@@ -88,28 +88,28 @@ function categoriesGetCount() {
 	return dbFetchColumn($query);
 } 
 
-function categoriesGetListByGroup () {
-    
-    $query = $query = "SELECT `categories`.*, `groups`.`title` AS group_title "
-            . "FROM `categories` LEFT JOIN `groups` ON `categories`.`group_id` = `groups`. `id` "
-            . "ORDER BY `groups`.`title`, `categories`.`title` "; 
-    
-    $categories = dbFetchAll($query);
-    
-    $categoryList = [];
-    
-    foreach ($categories as $category) {
-        
+    function categoriesGetListByGroup () {
 
-    
-        $categoryList[$category['id']] = $category['group_title'] . '/' . $category['title'];
-        
-        
+        $query = $query = "SELECT `categories`.*, `groups`.`title` AS group_title "
+                . "FROM `categories` LEFT JOIN `groups` ON `categories`.`group_id` = `groups`. `id` "
+                . "ORDER BY `groups`.`title`, `categories`.`title` "; 
+
+        $categories = dbFetchAll($query);
+
+        $categoryList = [];
+
+        foreach ($categories as $category) {
+
+
+
+            $categoryList[$category['id']] = $category['group_title'] . '/' . $category['title'];
+
+
+        }
+
+
+
+        return $categoryList;
+
+
     }
-    
-    
-    
-    return $categoryList;
-    
-    
-}

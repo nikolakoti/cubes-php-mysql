@@ -111,4 +111,17 @@ function brandsGetList () {
     return $brandList;
     
     
-}
+} 
+
+
+
+//function brandsRedirect (){
+//    
+//    
+//    header('Location: /crud-brands-list.php');
+//    die();
+//    
+//    
+//
+//    return header('');
+//}

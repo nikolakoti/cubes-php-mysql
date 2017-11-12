@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2017 at 11:54 PM
+-- Generation Time: Nov 12, 2017 at 07:08 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -49,7 +49,11 @@ INSERT INTO `brands` (`id`, `title`, `website_url`) VALUES
 (8, 'Samsung', ''),
 (9, 'Sony', ''),
 (16, 'Siemens', ''),
-(17, 'Vivax', '');
+(17, 'Vivax', ''),
+(27, 'Sony', ''),
+(28, 'Sony', ''),
+(29, 'Sony', ''),
+(30, 'Sony', '');
 
 -- --------------------------------------------------------
 
@@ -120,16 +124,15 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `section_id`, `title`, `description`, `content`, `created_at`) VALUES
-(1, 1, '', NULL, NULL, NULL),
-(2, 2, '', NULL, NULL, NULL),
-(3, 3, '', NULL, NULL, NULL),
-(4, 4, '', NULL, NULL, NULL),
-(5, 5, '', NULL, NULL, NULL),
-(6, 3, 'aaaaa', '', '', '0000-00-00 00:00:00'),
-(7, 2, 'aaa', '', '', '0000-00-00 00:00:00'),
-(8, 2, 'bbbbbbbbbbb', '', '', '0000-00-00 00:00:00'),
-(9, 3, 'muykkmu', '', '', '0000-00-00 00:00:00'),
-(10, 3, 'Test', 'Test', 'Ovo je samo test', '0000-00-00 00:00:00');
+(4, 4, 'Islandski bend GusGus u Beogradu', '', '', '0000-00-00 00:00:00'),
+(13, 1, 'Zvezda u finalu Lige Evrope', '', '', '0000-00-00 00:00:00'),
+(14, 1, 'Jokic ponovo najbolji', '', '', '0000-00-00 00:00:00'),
+(17, 3, 'Pucnjava u Brace Jerkovic', '', '', '0000-00-00 00:00:00'),
+(18, 5, 'Povoljni aranzmani', '', '', '0000-00-00 00:00:00'),
+(19, 8, 'Srbija na pravom putu', '', '', '0000-00-00 00:00:00'),
+(21, 7, 'Test', '', '', '0000-00-00 00:00:00'),
+(22, 9, 'Djule Van Gogh promenio ime benda u \"Vincent\"', '', '', '0000-00-00 00:00:00'),
+(23, 6, 'Aleksandar Vucic ugostio Deda Mraza', 'Prilikom posete, najpoznatiji Deda je svom unuku obecao da ce Srbija 2018. biti jos Brza, Jaca i Bolja!', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -252,10 +255,13 @@ CREATE TABLE `sections` (
 
 INSERT INTO `sections` (`id`, `title`) VALUES
 (1, 'Sport'),
-(2, 'Ljubav i Zdravlje'),
 (3, 'Hronika'),
-(4, 'Razonoda'),
-(5, 'Turizam');
+(4, 'Zabava'),
+(5, 'Turizam'),
+(6, 'Politika'),
+(7, 'Drustvo'),
+(8, 'Ekonomija'),
+(9, 'Kultura');
 
 -- --------------------------------------------------------
 
@@ -348,7 +354,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -366,7 +372,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `polaznici`
@@ -390,7 +396,7 @@ ALTER TABLE `product_tags`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tags`

@@ -1,20 +1,17 @@
 <?php
-
 session_start();
+require_once __DIR__ . '/models/m_users.php';
 
-require_once __DIR__ . '/models/m_users.php'; 
-
-if (!isUserLoggedIn()) {
-    header('Location: /login.php'); 
+if(!isUserLoggedIn()) {
+    header('location: /login.php');
     die();
 }
-
-require_once __DIR__ . '/models/m_news.php'; 
+require_once __DIR__ . '/models/m_news.php';
 
 require_once __DIR__ . '/models/m_sections.php';
 
 if (empty($_GET['id'])) {
-    die('Morate proslediti ID');
+    die('Morate proslediti id');
 }
 
 $id = (int) $_GET['id'];
@@ -22,20 +19,18 @@ $id = (int) $_GET['id'];
 $oneNews = newsFetchOneById($id);
 
 if (empty($oneNews)) {
-    die('Trazeni vest ne postoji');
+    die('Izabrana vest ne postoji!');
 }
-
 
 //ovde se prihvataju vrednosti polja, popisati sve kljuceve i pocetne vrednosti
 $formData = array(
+	//ovde napisati sve kljuceve i pocetne vrednosti
     'section_id' => $oneNews['section_id'],
     'title' => $oneNews['title'],
     'description' => $oneNews['description'],
-    //'photo' => $oneNews['photo'],
+//    'photo' => $oneNews['photo'],
     'content' => $oneNews['content'],
-    'created_at' => $oneNews['created_at']
-    
-        //ovde napisati sve kljuceve i pocetne vrednosti
+    'created_at' => $oneNews['created_at'],
 );
 
 //ovde se smestaju greske koje imaju polja u formi
@@ -45,29 +40,26 @@ $formErrors = array();
 //uvek se prosledjuje jedno polje koje je indikator da su podaci poslati sa forme
 //odnosno da je korisnik pokrenuo neku akciju
 if (isset($_POST["task"]) && $_POST["task"] == "save") {
+	
+	/*********** filtriranje i validacija polja ****************/
+	if (isset($_POST["section_id"]) && $_POST["section_id"] !== '') {
+        //Dodavanje parametara medju podatke u formi
+        $formData["section_id"] = $_POST["section_id"];
 
-    /*     * ********* filtriranje i validacija polja *************** */
-    if (isset($_POST["section_id"]) && $_POST["section_id"] !== '') {
-		//Dodavanje parametara medju podatke u formi
-		$formData["section_id"] = $_POST["section_id"];
-		
-		//Filtering 1
-		$formData["section_id"] = trim($formData["section_id"]);
-		
-		$sectionsTest = sectionsFetchOneById($formData['section_id']); 
-                
-                if (empty($sectionsTest)) {
-                    //nije pronadjena grupa po ID-ju
-                    $formErrors["section_id"][] = "Izabrali ste neodgovarajucu vrednost za polje Section";
-                }
-   
-	} else {//Ovaj else ide samo ako je polje obavezno
-		$formErrors["section_id"][] = "Polje Section je obavezno";
-	} 
-    
-    
-    
-    
+        //Filtering 1
+        $formData["section_id"] = trim($formData["section_id"]);
+
+
+        $testSection = sectionsFetchOneById($formData["section_id"]);
+        if (empty($testSection)) {
+            //nije pronadjena sekcija po ID-ju
+            $formErrors['section_id'][] = "Izabrali ste neodgovarajucu vrednost za polje section_id";
+        }
+    } else {//Ovaj else ide samo ako je polje obavezno
+        $formErrors["section_id"][] = "Polje section_id je obavezno";
+    }
+
+
     if (isset($_POST["title"]) && $_POST["title"] !== '') {
         //Dodavanje parametara medju podatke u formi
         $formData["title"] = $_POST["title"];
@@ -76,52 +68,75 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
         $formData["title"] = trim($formData["title"]);
     } else {//Ovaj else ide samo ako je polje obavezno
         $formErrors["title"][] = "Polje title je obavezno";
-    } 
-    
-    
-        
-        if (isset($_POST["description"]) && $_POST["description"] !== '') {
+    }
+
+    if (isset($_POST["description"]) && $_POST["description"] !== '') {
         //Dodavanje parametara medju podatke u formi
         $formData["description"] = $_POST["description"];
 
         //Filtering 1
         $formData["description"] = trim($formData["description"]);
-    } 
-    
-     if (isset($_POST["content"]) && $_POST["content"] !== '') {
-        //Dodavanje parametara medju podatke u formi
-        $formData["content"] = $_POST["content"];
+    }
 
-        //Filtering 1
-        $formData["content"] = trim($formData["content"]);
-    } 
-    
-//     if (isset($_POST["created_at"]) && $_POST["created_at"] !== '') {
-//        //Dodavanje parametara medju podatke u formi
-//        $formData["created_at"] = $_POST["created_at"];
+
+    // kod za proveru polja
+//    if (isset($_FILES["photo"]) && empty($_FILES["photo"]['error'])) {
+//        //Filtering
+//        $photoFileTmpPath = $_FILES["photo"]["tmp_name"];
+//        $photoFileName = basename($_FILES["photo"]["name"]);
+//        $photoFileMime = mime_content_type($_FILES["photo"]["tmp_name"]);
+//        $photoFileSize = $_FILES["photo"]["size"];
 //
-//        //Filtering 1
-//        $formData["created_at"] = trim($formData["created_at"]);
+//        //validation
+//        $photoFileAllowedMime = array("image/jpeg", "image/png", "image/gif");
+//        $photoFileMaxSize = 1 * 1024 * 1024; // 1 MB
+//
+//        if (!in_array($photoFileMime, $photoFileAllowedMime)) {
+//            $formErrors["photo"][] = "Fajl photo je u neispravnom formatu";
+//        }
+//
+//        if ($photoFileSize > $photoFileMaxSize) {
+//            $formErrors["photo"][] = "Fajl photo prelazi maksimalnu dozvoljenu velicinu";
+//        }
 //    }
-//        
-        
     
- /*     * ********* filtriranje i validacija polja *************** */
+    if (isset($_POST["content"]) && $_POST["content"] !== '') {
+		//Dodavanje parametara medju podatke u formi
+		$formData["content"] = $_POST["content"];
+		
+		//Filtering 1
+		$formData["content"] = trim($formData["content"]);
+		
+		
+	}
+        
+
+
+    /*     * ********* filtriranje i validacija polja *************** */
 
 
     //Ukoliko nema gresaka 
     if (empty($formErrors)) {
-        
-        $newsUpdated = newsUpdateOneById($oneNews['id'], $formData);
 
-        header('location: /crud-news-list.php');
-        die();
-//Uradi akciju koju je korisnik trazio
+        //ovde treba da se setuje konacna putanja do fajla.
+
+//        $destinationPath = $uploadsDirectory . DIRECTORY_SEPARATOR . $photoFileName;
+//
+//        if (!move_uploaded_file($photoFileTmpPath, $destinationPath)) {
+//            $formErrors["photo"][] = "Doslo je do greske prilikom snimanja fajla photo";
+//        } else {
+           $newNewsId = newsUpdateOneById($oneNews['id'], $formData);
+
+            header('location: /crud-news-list.php');
+            die();
+        }
     }
-}
-
+    
+    
 $sectionList = sectionsGetList();
+
 
 require_once __DIR__ . '/views/layout/header.php';
 require_once __DIR__ . '/views/templates/t_crud-news-edit.php';
 require_once __DIR__ . '/views/layout/footer.php';
+

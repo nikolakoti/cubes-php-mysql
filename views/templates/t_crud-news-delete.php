@@ -22,6 +22,7 @@
         <div class="row">
             <div class="col-md-12">
                 <form action="" method="post" class="form-horizontal">
+                    <input type="hidden" name="task" value="delete">
                     <fieldset>
                         <legend>Are you sure you want to delete news?</legend>
 
@@ -30,7 +31,7 @@
                                 <strong>
                                     <?php echo htmlspecialchars($oneNews['id']); ?> -
                                     <?php echo htmlspecialchars($oneNews['section_id']); ?> / 
-                                   <?php echo htmlspecialchars($oneNews['title']); ?>
+                                    <?php echo htmlspecialchars($oneNews['title']); ?>
                                 </strong>
                             </div>
                         </div>

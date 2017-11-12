@@ -45,7 +45,7 @@
                                     #<?php echo htmlspecialchars($oneNews['id']); ?>
                                 </td>
                                 <td>
-                                    <?php echo htmlspecialchars($oneNews['section_id']); ?>
+                                    <?php echo htmlspecialchars($oneNews['section_title']); ?>
                                 </td>
                                 <td>
                                     <?php echo htmlspecialchars($oneNews['title']); ?>

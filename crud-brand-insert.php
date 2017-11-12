@@ -58,9 +58,8 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
         //Uradi akciju koju je korisnik trazio 
 
         $newBrandId = brandsInsertOne($formData);
-
-        header('Location: /crud-brand-list.php');
-        die();
+        
+        brandsRedirect();
     }
 }
 

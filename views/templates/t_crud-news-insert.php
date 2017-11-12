@@ -126,7 +126,7 @@
                     <fieldset>
                         <legend></legend>
                         <div class="form-group text-right">
-                            <a href="/crud-news-list" class="btn btn-default">Cancel</a>
+                            <a href="/crud-news-list.php" class="btn btn-default">Cancel</a>
                             <button type="submit" class="btn btn-success"><i class="fa fa-plus-circle"></i> Add</button>
                         </div>
                     </fieldset>

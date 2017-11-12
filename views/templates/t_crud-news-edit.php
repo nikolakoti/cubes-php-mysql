@@ -15,46 +15,42 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>
-                    CRUD News - Edit news #<?php echo htmlspecialchars($oneNews['id']); ?>
+                    CRUD News - Edit news #<?php echo htmlspecialchars($oneNews['id']); ?> - <?php echo htmlspecialchars($oneNews['title']); ?>
                 </h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="post" class="form-horizontal"> 
+                <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
                     <input type="hidden" name="task" value="save">
                     <fieldset>
                         <legend>General Data</legend>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Section</label>  
+                            <label class="col-md-3 control-label">Section</label>
                             <div class="col-md-5">
-                                <select class="form-control">
+                                <select name="section_id" class="form-control">
                                     <option value="">--- Select Section ---</option>
-                                    <?php foreach ($sectionList as $sectionId => $sectionValue) { ?>
+                                    <?php foreach ($sectionList as $sectionId => $sectionTitle) { ?>
                                         <option 
                                             value="<?php echo htmlspecialchars($sectionId); ?>"
 
                                             <?php if ($sectionId == $formData['section_id']) { ?>
 
-                                                selected="selected"
+                                                selected = "selected" 
 
                                             <?php } ?>
 
-                                            ><?php echo htmlspecialchars($sectionValue); ?></option>
-                                        <?php } ?>
+                                            ><?php echo htmlspecialchars($sectionTitle);
+                                            ?> </option> 
+                                    <?php } ?>
                                 </select>
-                            </div>
-                            <div class="col-md-4">
-
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Title</label>  
                             <div class="col-md-5">
-
                                 <input value="<?php echo isset($formData["title"]) ? htmlspecialchars($formData["title"]) : ""; ?>" type="text" name="title" class="form-control">
-
                             </div>
                             <div class="col-md-4">
                                 <?php if (!empty($formErrors["title"])) { ?>
@@ -68,8 +64,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-3 control-label">Description</label>  
+                            <label class="col-md-3 control-label">Description</label> 
                             <div class="col-md-5">
+
                                 <textarea name="description" class="form-control" rows="5">
                                     <?php echo isset($formData["description"]) ? htmlspecialchars($formData["description"]) : ""; ?>
                                 </textarea>
@@ -107,10 +104,8 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-2">
+                                <textarea name="content" class="form-control" rows="30"><?php echo isset($formData["content"]) ? htmlspecialchars($formData["content"]) : ""; ?></textarea>
 
-                                <textarea name="content" class="form-control" rows="30">
-                                    <?php echo isset($formData["content"]) ? htmlspecialchars($formData["content"]) : ""; ?>
-                                </textarea>
                             </div>
                             <div class="col-md-4">
                                 <?php if (!empty($formErrors["content"])) { ?>
