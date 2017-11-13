@@ -205,6 +205,27 @@ if (isset($_POST["title"]) && $_POST["title"] !== '') {
 	} else {//Ovaj else ide samo ako je polje obavezno
 		$formErrors["brand_id"][] = "Polje brand_id je obavezno";
 	}
+        
+        if (isset($_FILES["photo"]) && empty($_FILES["photo"]['error'])) {
+		//Filtering
+		$photoFileTmpPath = $_FILES["photo"]["tmp_name"];
+		$photoFileName = basename($_FILES["photo"]["name"]);
+		$photoFileMime = mime_content_type($_FILES["photo"]["tmp_name"]);
+		$photoFileSize = $_FILES["photo"]["size"];
+
+		//validation
+		$photoFileAllowedMime = array("image/jpeg", "image/png", "image/gif");
+		$photoFileMaxSize = 5 * 1024 * 1024;// 5 MB
+
+		if (!in_array($photoFileMime, $photoFileAllowedMime)) {
+			$formErrors["photo"][] = "Fajl photo je u neispravnom formatu";
+		}
+
+		if ($photoFileSize > $photoFileMaxSize) {
+			$formErrors["photo"][] = "Fajl photo prelazi maksimalnu dozvoljenu velicinu";
+		}
+		
+	} 
     
 	/*********** filtriranje i validacija polja ****************/
 	
@@ -212,7 +233,45 @@ if (isset($_POST["title"]) && $_POST["title"] !== '') {
 	//Ukoliko nema gresaka 
 	if (empty($formErrors)) {
 
-        
+            productsUpdateOneById($product['id'], $formData);
+            
+            if(isset($_FILES['photo'])) {
+                
+                //obrsiemo staru sliku 
+                
+                $oldPhotoPath =  __DIR__ . "/uploads/products/" . $product['photo_filename'];
+                
+                if (is_file($oldPhotoPath)) {
+                    
+                    unlink($oldPhotoPath);
+                }
+                //premestimo novu sliku 
+                
+                $newPhotoFileName = $product['id'] . '_' . $photoFileName;
+                
+                $destinationPath = __DIR__ . '/uploads/products/' . $newPhotoFileName;
+                        
+                //update-ujemo photo_filename 
+                
+                if (move_uploaded_file($photoFileTmpPath, $destinationPath)) {
+                    
+                    productsUpdatePhotoFileName($product['id'], $newPhotoFileName);
+                    
+                    header ('Location:/crud-product-list.php');
+                    die();
+                    
+                } else {
+                    
+                    $formErrors['photo'][] = 'Doslo je do greske prilikom upload-a';
+                }
+                
+                
+            } else {
+                
+                header ('Location:/crud-product-list.php');
+                die();
+                
+            }
     }
 }
 

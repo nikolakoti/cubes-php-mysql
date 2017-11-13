@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="post" class="form-horizontal">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                     <input type="hidden" name="task" value="save">
 
                     <fieldset>
@@ -161,7 +161,7 @@
                         <legend>Photo</legend>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
-                                <img src="/skins/tema/img/portfolio/enkel-home-blue.png" class="img-responsive">
+                                <img src="/uploads/products/<?php echo htmlspecialchars($product['photo_filename']); ?>" class="img-responsive">
                             </div>
                         </div>
                         <div class="form-group">
