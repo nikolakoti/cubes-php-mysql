@@ -25,7 +25,7 @@ if (empty($oneNews)) {
 }
 
 $sections = sectionsFetchAll();
-print_r($sections);
+
 
 if (isset($_POST["task"]) && $_POST["task"] == "delete") {
 

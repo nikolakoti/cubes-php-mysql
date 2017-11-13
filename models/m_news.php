@@ -99,7 +99,7 @@ function newsGetList() {
     $news = dbFetchAll($query);
 
 
-    $newsList = [];  //od PHP-a 5.4 koristi se ova notacija za kreiranje niza
+    $newsList = [];  
 
     foreach ($news as $oneNews) {
 
