@@ -132,18 +132,11 @@ function categoriesFileRedirect() {
         case "sections":
             $newEntityName = 'section';
             break;
-            deafult:
+        default:
             $newEntityName = 'news';
             break;
     }
 
-    $currentScriptPath = $_SERVER['SCRIPT_FILENAME'];
-
-    if (is_file($currentScriptPath) === true) {
-
-        header('Location:/crud-' . $newEntityName . '-list.php');
-        die();
-    }
-
-    return true;
+    header('Location:/crud-' . $newEntityName . '-list.php');
+    die();
 }

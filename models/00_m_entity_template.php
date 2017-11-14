@@ -7,10 +7,10 @@ require_once __DIR__ . '/m_database.php';
  * @return array Aarray of associative arrays that represent rows
  */
 function entityNameFetchAll() {
-	$query = "SELECT `entityName`.* FROM `entityName`";
-	
-	
-	return dbFetchAll($query);
+    $query = "SELECT `entityName`.* FROM `entityName`";
+
+
+    return dbFetchAll($query);
 }
 
 /**
@@ -18,12 +18,12 @@ function entityNameFetchAll() {
  * @return array Associative array that represent one row
  */
 function entityNameFetchOneById($id) {
-	
-	$query = "SELECT `entityName`.* "
-			. "FROM `entityName` "
-			. "WHERE `id` = '" . dbEscape($id) . "'";
-	
-	return dbFetchOne($query);
+
+    $query = "SELECT `entityName`.* "
+            . "FROM `entityName` "
+            . "WHERE `id` = '" . dbEscape($id) . "'";
+
+    return dbFetchOne($query);
 }
 
 /**
@@ -31,11 +31,11 @@ function entityNameFetchOneById($id) {
  * @return int Affected rows
  */
 function entityNameDeleteOneById($id) {
-	
-	$query = "DELETE FROM `entityName` "
-			. "WHERE `id` = '" . dbEscape($id) . "'";
-	
-	return dbQuery($query);
+
+    $query = "DELETE FROM `entityName` "
+            . "WHERE `id` = '" . dbEscape($id) . "'";
+
+    return dbQuery($query);
 }
 
 /**
@@ -43,55 +43,51 @@ function entityNameDeleteOneById($id) {
  * @return type
  */
 function entityNameInsertOne(array $data) {
-	
-	$columnsPart = "(`" . implode('`, `', array_keys($data)) . "`)";
-	
-	$values = array();
-	
-	foreach ($data as $value) {
-		$values[] = "'" . dbEscape($value) . "'";
-	}
-	
-	$valuesPart = "(" . implode(', ', $values) . ")";
-	
-	$query = "INSERT INTO `entityName` " . $columnsPart . " VALUES " . $valuesPart;
 
-	
-	dbQuery($query);
-	
-	return dbLastInsertId();
+    $columnsPart = "(`" . implode('`, `', array_keys($data)) . "`)";
+
+    $values = array();
+
+    foreach ($data as $value) {
+        $values[] = "'" . dbEscape($value) . "'";
+    }
+
+    $valuesPart = "(" . implode(', ', $values) . ")";
+
+    $query = "INSERT INTO `entityName` " . $columnsPart . " VALUES " . $valuesPart;
+
+
+    dbQuery($query);
+
+    return dbLastInsertId();
 }
 
 function entityNameUpdateOneById($id, $data) {
-	
-	$setParts = array();
-	
-	foreach ($data as $column => $value) {
-		$setParts[] = "`" . $column . "` = '" . dbEscape($value) . "'";
-	}
-	
-	$setPart = implode(',', $setParts);
-	
-	$query = "UPDATE `entityName` SET " . $setPart . " WHERE `id` = '" . dbEscape($id) . "'";
 
-	return dbQuery($query);
+    $setParts = array();
+
+    foreach ($data as $column => $value) {
+        $setParts[] = "`" . $column . "` = '" . dbEscape($value) . "'";
+    }
+
+    $setPart = implode(',', $setParts);
+
+    $query = "UPDATE `entityName` SET " . $setPart . " WHERE `id` = '" . dbEscape($id) . "'";
+
+    return dbQuery($query);
 }
 
 /**
  * @return int Count of all rows in table
  */
 function entityNameGetCount() {
-	$link = dbGetLink();
-	
-	$query = "SELECT COUNT(`id`) FROM `entityName`";
-	
-	return dbFetchColumn($query);
-} 
+    $link = dbGetLink();
 
+    $query = "SELECT COUNT(`id`) FROM `entityName`";
 
-/**
- * @return BOOLEAN If absolute path of current script is file
- */
+    return dbFetchColumn($query);
+}
+
 function entityNameFileRedirect() {
 
 
@@ -114,20 +110,11 @@ function entityNameFileRedirect() {
         case "sections":
             $newEntityName = 'section';
             break;
-            deafult:
+        default:
             $newEntityName = 'news';
             break;
     }
 
-    $currentScriptPath = $_SERVER['SCRIPT_FILENAME'];
-
-    if (is_file($currentScriptPath) === true) {
-
-        header('Location:/crud-' . $newEntityName . '-list.php');
-        die();
-    }
-
-    return true;
+    header('Location:/crud-' . $newEntityName . '-list.php');
+    die();
 }
-
-    
