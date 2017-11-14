@@ -68,9 +68,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
     if (empty($formErrors)) {
         groupsUpdateOneById($group['id'], $formData);
 
-        header('Location: /crud-group-list.php');
-        die();
-//Uradi akciju koju je korisnik trazio
+        groupsFileRedirect();
     }
 }
 

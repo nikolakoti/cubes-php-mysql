@@ -55,9 +55,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 
         $newGroupId = groupsInsertOne($formData);
 
-        header('Location: /crud-group-list.php');
-        die();
-        //Uradi akciju koju je korisnik trazio
+        groupsFileRedirect();
     }
 }
 

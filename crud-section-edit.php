@@ -67,9 +67,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
     if (empty($formErrors)) {
         sectionsUpdateOneById($section['id'], $formData);
 
-        header('Location: /crud-section-list.php');
-        die();
-//Uradi akciju koju je korisnik trazio
+        sectionsFileRedirect();
     }
 }
 

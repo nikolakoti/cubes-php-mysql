@@ -233,8 +233,7 @@ if (isset($_POST["title"]) && $_POST["title"] !== '') {
            
            productsUpdatePhotoFileName($newProductId, $newProductPhotoFileName);
            
-           header ('Location:/crud-product-list.php');
-           die();
+           productsFileRedirect();
            
        } else 
            

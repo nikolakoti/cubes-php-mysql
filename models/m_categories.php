@@ -7,10 +7,10 @@ require_once __DIR__ . '/m_database.php';
  * @return array Aarray of associative arrays that represent rows
  */
 function categoriesFetchAll() {
-	$query = "SELECT `categories`.*, `groups`.`title` AS group_title FROM `categories` LEFT JOIN `groups` ON `categories`.`group_id` = `groups`. `id`";
-	
-	
-	return dbFetchAll($query);
+    $query = "SELECT `categories`.*, `groups`.`title` AS group_title FROM `categories` LEFT JOIN `groups` ON `categories`.`group_id` = `groups`. `id`";
+
+
+    return dbFetchAll($query);
 }
 
 /**
@@ -18,12 +18,12 @@ function categoriesFetchAll() {
  * @return array Associative array that represent one row
  */
 function categoriesFetchOneById($id) {
-	
-	$query = "SELECT `categories`.* "
-			. "FROM `categories` "
-			. "WHERE `id` = '" . dbEscape($id) . "'";
-	
-	return dbFetchOne($query);
+
+    $query = "SELECT `categories`.* "
+            . "FROM `categories` "
+            . "WHERE `id` = '" . dbEscape($id) . "'";
+
+    return dbFetchOne($query);
 }
 
 /**
@@ -31,11 +31,11 @@ function categoriesFetchOneById($id) {
  * @return int Affected rows
  */
 function categoriesDeleteOneById($id) {
-	
-	$query = "DELETE FROM `categories` "
-			. "WHERE `id` = '" . dbEscape($id) . "'";
-	
-	return dbQuery($query);
+
+    $query = "DELETE FROM `categories` "
+            . "WHERE `id` = '" . dbEscape($id) . "'";
+
+    return dbQuery($query);
 }
 
 /**
@@ -43,73 +43,107 @@ function categoriesDeleteOneById($id) {
  * @return type
  */
 function categoriesInsertOne(array $data) {
-	
-	$columnsPart = "(`" . implode('`, `', array_keys($data)) . "`)";
-	
-	$values = array();
-	
-	foreach ($data as $value) {
-		$values[] = "'" . dbEscape($value) . "'";
-	}
-	
-	$valuesPart = "(" . implode(', ', $values) . ")";
-	
-	$query = "INSERT INTO `categories` " . $columnsPart . " VALUES " . $valuesPart;
 
-	
-	dbQuery($query);
-	
-	return dbLastInsertId();
+    $columnsPart = "(`" . implode('`, `', array_keys($data)) . "`)";
+
+    $values = array();
+
+    foreach ($data as $value) {
+        $values[] = "'" . dbEscape($value) . "'";
+    }
+
+    $valuesPart = "(" . implode(', ', $values) . ")";
+
+    $query = "INSERT INTO `categories` " . $columnsPart . " VALUES " . $valuesPart;
+
+
+    dbQuery($query);
+
+    return dbLastInsertId();
 }
 
 function categoriesUpdateOneById($id, $data) {
-	
-	$setParts = array();
-	
-	foreach ($data as $column => $value) {
-		$setParts[] = "`" . $column . "` = '" . dbEscape($value) . "'";
-	}
-	
-	$setPart = implode(',', $setParts);
-	
-	$query = "UPDATE `categories` SET " . $setPart . " WHERE `id` = '" . dbEscape($id) . "'";
 
-	return dbQuery($query);
+    $setParts = array();
+
+    foreach ($data as $column => $value) {
+        $setParts[] = "`" . $column . "` = '" . dbEscape($value) . "'";
+    }
+
+    $setPart = implode(',', $setParts);
+
+    $query = "UPDATE `categories` SET " . $setPart . " WHERE `id` = '" . dbEscape($id) . "'";
+
+    return dbQuery($query);
 }
 
 /**
  * @return int Count of all rows in table
  */
 function categoriesGetCount() {
-	$link = dbGetLink();
-	
-	$query = "SELECT COUNT(`id`) FROM `categories`";
-	
-	return dbFetchColumn($query);
-} 
+    $link = dbGetLink();
 
-    function categoriesGetListByGroup () {
+    $query = "SELECT COUNT(`id`) FROM `categories`";
 
-        $query = $query = "SELECT `categories`.*, `groups`.`title` AS group_title "
-                . "FROM `categories` LEFT JOIN `groups` ON `categories`.`group_id` = `groups`. `id` "
-                . "ORDER BY `groups`.`title`, `categories`.`title` "; 
+    return dbFetchColumn($query);
+}
 
-        $categories = dbFetchAll($query);
+function categoriesGetListByGroup() {
 
-        $categoryList = [];
+    $query = $query = "SELECT `categories`.*, `groups`.`title` AS group_title "
+            . "FROM `categories` LEFT JOIN `groups` ON `categories`.`group_id` = `groups`. `id` "
+            . "ORDER BY `groups`.`title`, `categories`.`title` ";
 
-        foreach ($categories as $category) {
+    $categories = dbFetchAll($query);
 
+    $categoryList = [];
 
-
-            $categoryList[$category['id']] = $category['group_title'] . '/' . $category['title'];
-
-
-        }
+    foreach ($categories as $category) {
 
 
 
-        return $categoryList;
-
-
+        $categoryList[$category['id']] = $category['group_title'] . '/' . $category['title'];
     }
+
+
+
+    return $categoryList;
+}
+
+function categoriesFileRedirect() {
+
+
+    $categories = "categories";
+
+    switch ($categories) {
+
+        case "brands":
+            $newEntityName = 'brand';
+            break;
+        case "products":
+            $newEntityName = 'product';
+            break;
+        case "categories":
+            $newEntityName = 'category';
+            break;
+        case "groups":
+            $newEntityName = 'group';
+            break;
+        case "sections":
+            $newEntityName = 'section';
+            break;
+            deafult:
+            $newEntityName = 'news';
+            break;
+    }
+
+    $currentScriptPath = $_SERVER['SCRIPT_FILENAME'];
+
+    if (is_file($currentScriptPath) === true) {
+
+        header('Location:/crud-' . $newEntityName . '-list.php');
+        die();
+    }
+
+    return true;
+}

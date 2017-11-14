@@ -54,9 +54,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 
         $newSectionId = sectionsInsertOne($formData);
 
-        header('Location: /crud-section-list.php');
-        die();
-        //Uradi akciju koju je korisnik trazio
+        sectionsFileRedirect();
     }
 }
 

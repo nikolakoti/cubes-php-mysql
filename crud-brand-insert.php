@@ -49,6 +49,10 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 
         //Filtering 1
         $formData["website_url"] = trim($formData["website_url"]);
+        
+
+        
+        
     }
     /*     * ********* filtriranje i validacija polja *************** */
 
@@ -59,7 +63,9 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 
         $newBrandId = brandsInsertOne($formData);
         
-        brandsRedirect();
+           
+        
+         brandsFileRedirect();
     }
 }
 

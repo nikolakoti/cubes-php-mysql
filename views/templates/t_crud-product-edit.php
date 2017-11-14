@@ -15,7 +15,8 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>
-                    CRUD Product - Edit product #
+                    CRUD Product - Edit product #<?php echo htmlspecialchars($product['id']); ?> - 
+                        <?php echo htmlspecialchars($product['title']); ?>
                 </h2>
             </div>
         </div>

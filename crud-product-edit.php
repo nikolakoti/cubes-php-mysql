@@ -257,19 +257,17 @@ if (isset($_POST["title"]) && $_POST["title"] !== '') {
                     
                     productsUpdatePhotoFileName($product['id'], $newPhotoFileName);
                     
-                    header ('Location:/crud-product-list.php');
-                    die();
+                    productsFileRedirect();
                     
                 } else {
                     
                     $formErrors['photo'][] = 'Doslo je do greske prilikom upload-a';
                 }
                 
+              
+           } else {
                 
-            } else {
-                
-                header ('Location:/crud-product-list.php');
-                die();
+                productsFileRedirect();
                 
             }
     }

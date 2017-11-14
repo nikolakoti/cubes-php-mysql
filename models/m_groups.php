@@ -7,10 +7,10 @@ require_once __DIR__ . '/m_database.php';
  * @return array Aarray of associative arrays that represent rows
  */
 function groupsFetchAll() {
-	$query = "SELECT `groups`.* FROM `groups`";
-	
-	
-	return dbFetchAll($query);
+    $query = "SELECT `groups`.* FROM `groups`";
+
+
+    return dbFetchAll($query);
 }
 
 /**
@@ -18,12 +18,12 @@ function groupsFetchAll() {
  * @return array Associative array that represent one row
  */
 function groupsFetchOneById($id) {
-	
-	$query = "SELECT `groups`.* "
-			. "FROM `groups` "
-			. "WHERE `id` = '" . dbEscape($id) . "'";
-	
-	return dbFetchOne($query);
+
+    $query = "SELECT `groups`.* "
+            . "FROM `groups` "
+            . "WHERE `id` = '" . dbEscape($id) . "'";
+
+    return dbFetchOne($query);
 }
 
 /**
@@ -31,11 +31,11 @@ function groupsFetchOneById($id) {
  * @return int Affected rows
  */
 function groupsDeleteOneById($id) {
-	
-	$query = "DELETE FROM `groups` "
-			. "WHERE `id` = '" . dbEscape($id) . "'";
-	
-	return dbQuery($query);
+
+    $query = "DELETE FROM `groups` "
+            . "WHERE `id` = '" . dbEscape($id) . "'";
+
+    return dbQuery($query);
 }
 
 /**
@@ -43,75 +43,108 @@ function groupsDeleteOneById($id) {
  * @return type
  */
 function groupsInsertOne(array $data) {
-	
-	$columnsPart = "(`" . implode('`, `', array_keys($data)) . "`)";
-	
-	$values = array();
-	
-	foreach ($data as $value) {
-		$values[] = "'" . dbEscape($value) . "'";
-	}
-	
-	$valuesPart = "(" . implode(', ', $values) . ")";
-	
-	$query = "INSERT INTO `groups` " . $columnsPart . " VALUES " . $valuesPart;
 
-	
-	dbQuery($query);
-	
-	return dbLastInsertId();
+    $columnsPart = "(`" . implode('`, `', array_keys($data)) . "`)";
+
+    $values = array();
+
+    foreach ($data as $value) {
+        $values[] = "'" . dbEscape($value) . "'";
+    }
+
+    $valuesPart = "(" . implode(', ', $values) . ")";
+
+    $query = "INSERT INTO `groups` " . $columnsPart . " VALUES " . $valuesPart;
+
+
+    dbQuery($query);
+
+    return dbLastInsertId();
 }
 
 function groupsUpdateOneById($id, $data) {
-	
-	$setParts = array();
-	
-	foreach ($data as $column => $value) {
-		$setParts[] = "`" . $column . "` = '" . dbEscape($value) . "'";
-	}
-	
-	$setPart = implode(',', $setParts);
-	
-	$query = "UPDATE `groups` SET " . $setPart . " WHERE `id` = '" . dbEscape($id) . "'";
 
-	return dbQuery($query);
+    $setParts = array();
+
+    foreach ($data as $column => $value) {
+        $setParts[] = "`" . $column . "` = '" . dbEscape($value) . "'";
+    }
+
+    $setPart = implode(',', $setParts);
+
+    $query = "UPDATE `groups` SET " . $setPart . " WHERE `id` = '" . dbEscape($id) . "'";
+
+    return dbQuery($query);
 }
 
 /**
  * @return int Count of all rows in table
  */
 function groupsGetCount() {
-	$link = dbGetLink();
-	
-	$query = "SELECT COUNT(`id`) FROM `groups`";
-	
-	return dbFetchColumn($query);
+    $link = dbGetLink();
+
+    $query = "SELECT COUNT(`id`) FROM `groups`";
+
+    return dbFetchColumn($query);
 }
 
+function groupsGetList() {
 
-function groupsGetList () {
-    
-    $query = "SELECT `groups`.* FROM `groups` ORDER BY `groups`.`title`"; 
-    
+    $query = "SELECT `groups`.* FROM `groups` ORDER BY `groups`.`title`";
+
     $groups = dbFetchAll($query);
-    
+
     $groupList = [];
-    
+
     foreach ($groups as $group) {
-        
+
 //        $key = $group['id'];
 //        $value = $group['title'];
 //        
 //        $groupList[$key] = $value;
-    
+
         $groupList[$group['id']] = $group['title'];
-        
-        
     }
-    
-    
-    
+
+
+
     return $groupList;
-    
-    
+}
+
+function groupsFileRedirect() {
+
+
+    $groups = "groups";
+
+    switch ($groups) {
+
+        case "brands":
+            $newEntityName = 'brand';
+            break;
+        case "products":
+            $newEntityName = 'product';
+            break;
+        case "categories":
+            $newEntityName = 'category';
+            break;
+        case "groups":
+            $newEntityName = 'group';
+            break;
+        case "sections":
+            $newEntityName = 'section';
+            break;
+            deafult:
+            $newEntityName = 'news';
+            break;
+    }
+
+    $currentScriptPath = $_SERVER['SCRIPT_FILENAME'];
+
+    if (is_file($currentScriptPath) === true) {
+
+        header('Location:/crud-' . $newEntityName . '-list.php');
+        die();
+    }
+
+    return true;
 }

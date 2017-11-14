@@ -28,9 +28,8 @@ if (empty($category)) {
 if (isset($_POST["task"]) && $_POST["task"] == "delete") {
 
     categoriesDeleteOneById($id);
-
-    header('Location: /crud-category-list.php');
-    die();
+    
+    categoriesFileRedirect();
 }
 
 require_once __DIR__ . '/views/layout/header.php';

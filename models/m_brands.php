@@ -113,15 +113,62 @@ function brandsGetList () {
     
 } 
 
+function brandsRedirect () {
+
+$brands = 'brands'; 
+
+$brands = substr($brands, 0, strrpos($brands, "s"));
+    
+$currentFilePath = $_SERVER['SCRIPT_FILENAME']; 
+
+if (is_file($currentFilePath) === true) { 
+    
+    header ('Location:/crud-' . $brands . '-list.php');
+    die();
+    
+}
+
+return true;
+        
+        
+} 
+
+function brandsFileRedirect() {
 
 
-//function brandsRedirect (){
-//    
-//    
-//    header('Location: /crud-brands-list.php');
-//    die();
-//    
-//    
-//
-//    return header('');
-//}
+    $brands = "brands";
+
+    switch ($brands) {
+
+        case "brands":
+            $newEntityName = 'brand';
+            break;
+        case "products":
+            $newEntityName = 'product';
+            break;
+        case "categories":
+            $newEntityName = 'category';
+            break;
+        case "groups":
+            $newEntityName = 'group';
+            break;
+        case "sections":
+            $newEntityName = 'section';
+            break;
+            deafult:
+            $newEntityName = 'news';
+            break;
+    }
+
+    $currentScriptPath = $_SERVER['SCRIPT_FILENAME'];
+
+    if (is_file($currentScriptPath) === true) {
+
+        header('Location:/crud-' . $newEntityName . '-list.php');
+        die();
+    }
+
+    return true;
+}
+
+

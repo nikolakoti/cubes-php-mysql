@@ -29,8 +29,9 @@ if (isset($_POST["task"]) && $_POST["task"] == "delete") {
 
     brandsDeleteOneById($id);
 
-    header('Location: /crud-brand-list.php');
-    die();
+    
+    
+    brandsFileRedirect();
 }
 
 

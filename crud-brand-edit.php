@@ -72,8 +72,9 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
                 
             brandsUpdateOneById($brand['id'], $formData);
             
-            header('Location: /crud-brand-list.php'); 
-            die();
+              
+            
+            brandsFileRedirect();
 	}
 }
 

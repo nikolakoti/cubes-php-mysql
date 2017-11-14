@@ -127,13 +127,16 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
 //        } else {
            $newNewsId = newsUpdateOneById($oneNews['id'], $formData);
 
-            header('location: /crud-news-list.php');
-            die();
+           newsFileRedirect();
         }
     }
+ 
+//$newsList = newsGetListBySection();    
     
-    
+   
 $sectionList = sectionsGetList();
+
+
 
 
 require_once __DIR__ . '/views/layout/header.php';

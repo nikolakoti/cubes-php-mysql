@@ -86,9 +86,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 
         $newCategoryId = categoriesInsertOne($formData);
 
-        header('Location: /crud-category-list.php');
-        die();
-        //Uradi akciju koju je korisnik trazio
+        categoriesFileRedirect();
     }
 }
 

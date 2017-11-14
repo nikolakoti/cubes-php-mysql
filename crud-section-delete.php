@@ -29,8 +29,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "delete") {
 
     sectionsDeleteOneById($id);
 
-    header('Location: /crud-section-list.php');
-    die();
+    sectionsFileRedirect();
 }
 
 require_once __DIR__ . '/views/layout/header.php';

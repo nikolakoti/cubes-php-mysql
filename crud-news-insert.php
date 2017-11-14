@@ -116,8 +116,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 //        } else {
            $newNewsId = newsInsertOne($formData);
 
-            header('location: /crud-news-list.php');
-            die();
+           newsFileRedirect();
         }
     }
 

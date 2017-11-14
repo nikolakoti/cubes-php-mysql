@@ -31,8 +31,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "delete") {
 
     newsDeleteOneById($oneNews['id']);
 
-    header('location: /crud-news-list.php');
-    die();
+    newsFileRedirect();
 }
 
 

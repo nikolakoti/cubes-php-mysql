@@ -97,8 +97,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
     if (empty($formErrors)) {
         categoriesUpdateOneById($category['id'], $formData);
 
-        header('Location: /crud-category-list.php');
-        die();
+        categoriesFileRedirect();
 //Uradi akciju koju je korisnik trazio
     }
 }

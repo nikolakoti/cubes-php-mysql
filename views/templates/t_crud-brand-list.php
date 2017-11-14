@@ -45,7 +45,9 @@
                                     <?php echo htmlspecialchars($brand['title']); ?>
                                 </td>
                                 <td>
-                                    <?php echo htmlspecialchars($brand['website_url']); ?>
+
+                                    <a href="<?php echo htmlspecialchars($brand['website_url']); ?>" target="_blank"><?php echo htmlspecialchars($brand['website_url']); ?></a>
+
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group">

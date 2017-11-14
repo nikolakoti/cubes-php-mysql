@@ -28,8 +28,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "delete") {
 
     productsDeleteOneById($product['id']);
 
-    header('Location: /crud-product-list.php');
-    die();
+    productsFileRedirect();
 }
 
 

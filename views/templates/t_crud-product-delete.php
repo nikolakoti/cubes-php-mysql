@@ -15,7 +15,8 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>
-                    CRUD Product - Delete product #<?php echo htmlspecialchars($product['id']); ?>
+                    CRUD Product - Delete product #<?php echo htmlspecialchars($product['id']); ?> - 
+                    <?php echo htmlspecialchars($product['title']); ?>
                 </h2>
             </div>
         </div>
@@ -32,7 +33,6 @@
                                 <strong>
                                     #<?php echo htmlspecialchars($product['id']); ?> - 
                                     <?php echo htmlspecialchars($product['category_title']); ?> / 
-                                    <?php echo htmlspecialchars($product['brand_title']); ?>
                                     <?php echo htmlspecialchars($product['title']); ?>
                                 </strong>
                             </div>
