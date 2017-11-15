@@ -56,6 +56,8 @@ function productsDeleteOneById($id) {
  * @return type
  */
 function productsInsertOne(array $data) {
+    
+    $data['created_at'] = date('Y-m-d H:i:s');
 
     $columnsPart = "(`" . implode('`, `', array_keys($data)) . "`)";
 
@@ -139,4 +141,24 @@ function productsFileRedirect() {
 
     header('Location:/crud-' . $newEntityName . '-list.php');
     die();
+}
+
+
+function productsFetchAllByPage ($page, $rowsPerPage) {
+    
+    $query = "SELECT "
+            . "`products`.*, "
+            . "`categories`.`title` AS category_title, "
+            . "`brands`.`title` AS brand_title "
+            . "FROM `products` "
+            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id`"
+            . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id` ";
+    
+    $limit = $rowsPerPage; 
+    $offset = ($page - 1) * $rowsPerPage; 
+    
+    $query .= "LIMIT " . $limit . " OFFSET " . $offset; 
+    
+    return dbFetchAll($query);
+    
 }

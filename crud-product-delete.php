@@ -26,6 +26,14 @@ if (empty($product)) {
 
 if (isset($_POST["task"]) && $_POST["task"] == "delete") {
 
+    $photoFilePath = __DIR__ . "/uploads/products/" . $product['photo_filename']; 
+    
+    if (file_exists($photoFilePath)) {
+        
+        unlink($photoFilePath);
+        
+    }
+    
     productsDeleteOneById($product['id']);
 
     productsFileRedirect();

@@ -210,8 +210,12 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 
     //Ukoliko nema gresaka 
     if (empty($formErrors)) {
+        
+        //$formData['created_at'] = date('Y-m-d H:i:s');
 
         $newProductId = productsInsertOne($formData);
+        
+        
 
         $newProductPhotoFileName = $newProductId . '-' . $photoFileName;
 
