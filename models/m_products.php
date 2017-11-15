@@ -162,3 +162,52 @@ function productsFetchAllByPage ($page, $rowsPerPage) {
     return dbFetchAll($query);
     
 }
+
+
+function productsFetchAllByCategory ($categoryId) {
+    
+    $query = $query = "SELECT "
+            . "`products`.*, "
+            . "`categories`.`title` AS category_title, "
+            . "`brands`.`title` AS brand_title "
+            . "FROM `products` "
+            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
+            . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id` "
+            . "WHERE `products`.`category_id` = '" . dbEscape($categoryId). "'";
+
+    return dbFetchAll($query);
+}
+
+
+function productsGetCountByCategory ($categoryId) {
+    
+    $query = $query = "SELECT "
+            . "COUNT(products.id)"
+            . "FROM `products` "
+            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
+            . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id` "
+            . "WHERE `products`.`category_id` = '" . dbEscape($categoryId). "'";
+
+    return dbFetchColumn($query);
+} 
+
+
+function productsFetchAllByCategoryByPage ($categoryId, $page, $rowsPerPage) {
+    
+    
+    $query = $query = "SELECT "
+            . "`products`.*, "
+            . "`categories`.`title` AS category_title, "
+            . "`brands`.`title` AS brand_title "
+            . "FROM `products` "
+            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
+            . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id` "
+            . "WHERE `products`.`category_id` = '" . dbEscape($categoryId). "'";
+    
+    $limit = $rowsPerPage; 
+    $offset = ($page - 1) * $rowsPerPage; 
+    
+    $query .= "LIMIT " . $limit . " OFFSET " . $offset; 
+
+    return dbFetchAll($query);
+}

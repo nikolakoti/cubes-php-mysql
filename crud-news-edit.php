@@ -45,7 +45,7 @@ $formErrors = array();
 //uvek se prosledjuje jedno polje koje je indikator da su podaci poslati sa forme
 //odnosno da je korisnik pokrenuo neku akciju
 if (isset($_POST["task"]) && $_POST["task"] == "save") {
-
+    
     /*     * ********* filtriranje i validacija polja *************** */
     if (isset($_POST["section_id"]) && $_POST["section_id"] !== '') {
         //Dodavanje parametara medju podatke u formi
@@ -121,7 +121,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
 
         newsUpdateOneById($oneNews['id'], $formData);
 
-        if (isset($_FILES['photo'])) {
+        if (isset($_FILES['photo']) && empty($_FILES["photo"]['error'])) {
 
             //obrisemo staru sliku 
 
