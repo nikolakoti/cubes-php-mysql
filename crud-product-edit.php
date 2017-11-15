@@ -237,7 +237,7 @@ if (isset($_POST["title"]) && $_POST["title"] !== '') {
             
             if(isset($_FILES['photo'])) {
                 
-                //obrsiemo staru sliku 
+                //obrisemo staru sliku 
                 
                 $oldPhotoPath =  __DIR__ . "/uploads/products/" . $product['photo_filename'];
                 

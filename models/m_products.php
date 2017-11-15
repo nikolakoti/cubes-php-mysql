@@ -103,8 +103,8 @@ function productsGetCount() {
 
 function productsUpdatePhotoFileName($id, $photoFileName) {
 
-    $query = "UPDATE products "
-            . "SET photo_filename = '" . dbEscape($photoFileName) . "' "
+    $query = "UPDATE `products` "
+            . "SET `photo_filename` = '" . dbEscape($photoFileName) . "' "
             . "WHERE `id` = '" . dbEscape($id) . "'";
 
     return dbQuery($query);

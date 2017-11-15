@@ -8,7 +8,7 @@ if(!isUserLoggedIn()) {
 }
 
 require_once __DIR__ . '/models/m_news.php';
-require_once __DIR__ . '/models/m_sections.php';
+//require_once __DIR__ . '/models/m_sections.php';
 
 $news = newsFetchAll();
 

@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                     <input type="hidden" name="task" value="insert">
                     <fieldset>
                         <legend>General Data</legend>
@@ -95,9 +95,17 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">Select Photo</label>  
                             <div class="col-md-5">
-                                <input type="file" class="form-control">
+                                <input type="file" name="photo" class="form-control">
                             </div>
                             <div class="col-md-4">
+
+                                <?php if (!empty($formErrors["photo"])) { ?>
+                                    <ul style="color: red">
+                                        <?php foreach ($formErrors["photo"] as $errorMessage) { ?>
+                                            <li class="error"><?php echo $errorMessage; ?></li>
+                                        <?php } ?>
+                                    </ul>
+                                <?php } ?>
 
                             </div>
                         </div>

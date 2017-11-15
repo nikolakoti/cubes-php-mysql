@@ -1,8 +1,9 @@
 <?php
+
 session_start();
 require_once __DIR__ . '/models/m_users.php';
 
-if(!isUserLoggedIn()) {
+if (!isUserLoggedIn()) {
     header('location: /login.php');
     die();
 }
@@ -18,13 +19,17 @@ $id = (int) $_GET['id'];
 
 $oneNews = newsFetchOneById($id);
 
+$sectionList = sectionsGetList(); 
+
+
+
 if (empty($oneNews)) {
     die('Izabrana vest ne postoji!');
 }
 
 //ovde se prihvataju vrednosti polja, popisati sve kljuceve i pocetne vrednosti
 $formData = array(
-	//ovde napisati sve kljuceve i pocetne vrednosti
+    //ovde napisati sve kljuceve i pocetne vrednosti
     'section_id' => $oneNews['section_id'],
     'title' => $oneNews['title'],
     'description' => $oneNews['description'],
@@ -40,9 +45,9 @@ $formErrors = array();
 //uvek se prosledjuje jedno polje koje je indikator da su podaci poslati sa forme
 //odnosno da je korisnik pokrenuo neku akciju
 if (isset($_POST["task"]) && $_POST["task"] == "save") {
-	
-	/*********** filtriranje i validacija polja ****************/
-	if (isset($_POST["section_id"]) && $_POST["section_id"] !== '') {
+
+    /*     * ********* filtriranje i validacija polja *************** */
+    if (isset($_POST["section_id"]) && $_POST["section_id"] !== '') {
         //Dodavanje parametara medju podatke u formi
         $formData["section_id"] = $_POST["section_id"];
 
@@ -78,38 +83,34 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
         $formData["description"] = trim($formData["description"]);
     }
 
-
-    // kod za proveru polja
-//    if (isset($_FILES["photo"]) && empty($_FILES["photo"]['error'])) {
-//        //Filtering
-//        $photoFileTmpPath = $_FILES["photo"]["tmp_name"];
-//        $photoFileName = basename($_FILES["photo"]["name"]);
-//        $photoFileMime = mime_content_type($_FILES["photo"]["tmp_name"]);
-//        $photoFileSize = $_FILES["photo"]["size"];
-//
-//        //validation
-//        $photoFileAllowedMime = array("image/jpeg", "image/png", "image/gif");
-//        $photoFileMaxSize = 1 * 1024 * 1024; // 1 MB
-//
-//        if (!in_array($photoFileMime, $photoFileAllowedMime)) {
-//            $formErrors["photo"][] = "Fajl photo je u neispravnom formatu";
-//        }
-//
-//        if ($photoFileSize > $photoFileMaxSize) {
-//            $formErrors["photo"][] = "Fajl photo prelazi maksimalnu dozvoljenu velicinu";
-//        }
-//    }
-    
     if (isset($_POST["content"]) && $_POST["content"] !== '') {
-		//Dodavanje parametara medju podatke u formi
-		$formData["content"] = $_POST["content"];
-		
-		//Filtering 1
-		$formData["content"] = trim($formData["content"]);
-		
-		
-	}
-        
+        //Dodavanje parametara medju podatke u formi
+        $formData["content"] = $_POST["content"];
+
+        //Filtering 1
+        $formData["content"] = trim($formData["content"]);
+    }
+
+    if (isset($_FILES["photo"]) && empty($_FILES["photo"]['error'])) {
+        //Filtering
+        $photoFileTmpPath = $_FILES["photo"]["tmp_name"];
+        $photoFileName = basename($_FILES["photo"]["name"]);
+        $photoFileMime = mime_content_type($_FILES["photo"]["tmp_name"]);
+        $photoFileSize = $_FILES["photo"]["size"];
+
+        //validation
+        $photoFileAllowedMime = array("image/jpeg", "image/png", "image/gif");
+        $photoFileMaxSize = 5 * 1024 * 1024; // 5 MB
+
+        if (!in_array($photoFileMime, $photoFileAllowedMime)) {
+            $formErrors["photo"][] = "Fajl photo je u neispravnom formatu";
+        }
+
+        if ($photoFileSize > $photoFileMaxSize) {
+            $formErrors["photo"][] = "Fajl photo prelazi maksimalnu dozvoljenu velicinu";
+        }
+    }
+
 
 
     /*     * ********* filtriranje i validacija polja *************** */
@@ -118,23 +119,46 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
     //Ukoliko nema gresaka 
     if (empty($formErrors)) {
 
-        //ovde treba da se setuje konacna putanja do fajla.
+        newsUpdateOneById($oneNews['id'], $formData);
 
-//        $destinationPath = $uploadsDirectory . DIRECTORY_SEPARATOR . $photoFileName;
-//
-//        if (!move_uploaded_file($photoFileTmpPath, $destinationPath)) {
-//            $formErrors["photo"][] = "Doslo je do greske prilikom snimanja fajla photo";
-//        } else {
-           $newNewsId = newsUpdateOneById($oneNews['id'], $formData);
+        if (isset($_FILES['photo'])) {
 
-           newsFileRedirect();
+            //obrisemo staru sliku 
+
+            $oldPhotoPath = __DIR__ . "/uploads/news/" . $oneNews['photo_filename'];
+
+            if (is_file($oldPhotoPath)) {
+
+                unlink($oldPhotoPath);
+            }
+            //premestimo novu sliku 
+
+            $newPhotoFileName = $oneNews['id'] . '_' . $photoFileName;
+
+            $destinationPath = __DIR__ . '/uploads/news/' . $newPhotoFileName;
+
+            //update-ujemo photo_filename 
+
+            if (move_uploaded_file($photoFileTmpPath, $destinationPath)) {
+
+                newsUpdatePhotoFileName($oneNews['id'], $newPhotoFileName);
+
+                newsFileRedirect();
+            } else {
+
+                $formErrors['photo'][] = 'Doslo je do greske prilikom upload-a';
+            }
+        } else {
+
+            newsFileRedirect();
         }
     }
- 
-//$newsList = newsGetListBySection();    
+}
+
     
-   
-$sectionList = sectionsGetList();
+
+
+
 
 
 

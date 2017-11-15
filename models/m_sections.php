@@ -91,7 +91,9 @@ function sectionsGetCount() {
 
 function sectionsGetList() {
 
-    $query = "SELECT `sections`.* FROM `sections` LEFT JOIN `news` ON `sections`.`id` = `news`.`section_id` ORDER BY `sections`.`title`";
+    $query = "SELECT `sections`.* "
+            . "FROM `sections` "
+            . "ORDER BY `sections`.`title` ASC; ";
 
     $sections = dbFetchAll($query);
 
@@ -100,17 +102,15 @@ function sectionsGetList() {
 
     foreach ($sections as $section) {
 
-//        $key = $group['id'];
-//        $value = $group['title'];
-//   
-//    
-//    $groupList[$key] = $value;
+
 
         $sectionList[$section['id']] = $section['title'];
     }
 
     return $sectionList;
 }
+
+
 
 function sectionsFileRedirect() {
 

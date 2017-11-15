@@ -115,6 +115,15 @@ function newsGetList() {
     return $newsList;
 }
 
+function newsUpdatePhotoFileName($id, $photoFileName) {
+
+    $query = "UPDATE `news` "
+            . "SET `photo_filename` = '" . dbEscape($photoFileName) . "' "
+            . "WHERE `id` = '" . dbEscape($id) . "'";
+
+    return dbQuery($query);
+}
+
 function newsFileRedirect() {
 
 

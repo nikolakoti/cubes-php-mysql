@@ -125,17 +125,21 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">On Sale</label>  
                             <div class="col-md-5">
-                               <label><input name="on_sale" type="radio" value="1" <?php if (isset($formData['on_sale']) && $formData['on_sale'] == 1) {echo 'checked';} ?> > Yes</label>
-                                <label><input name="on_sale" type="radio" value="0" <?php if (isset($formData['on_sale']) && $formData['on_sale'] == 0) {echo 'checked';} ?> > No</label>
+                                <label><input name="on_sale" type="radio" value="1" <?php if (isset($formData['on_sale']) && $formData['on_sale'] == 1) {
+                                    echo 'checked';
+                                } ?> > Yes</label>
+                                <label><input name="on_sale" type="radio" value="0" <?php if (isset($formData['on_sale']) && $formData['on_sale'] == 0) {
+                                    echo 'checked';
+                                } ?> > No</label>
                             </div>
                             <div class="col-md-4">
-                                <?php if (!empty($formErrors["on_sale"])) { ?>
+                                    <?php if (!empty($formErrors["on_sale"])) { ?>
                                     <ul style="color: red">
-                                        <?php foreach ($formErrors["on_sale"] as $errorMessage) { ?>
+                                    <?php foreach ($formErrors["on_sale"] as $errorMessage) { ?>
                                             <li class="error"><?php echo $errorMessage; ?></li>
-                                        <?php } ?>
+    <?php } ?>
                                     </ul>
-                                <?php } ?>
+<?php } ?>
                             </div>
                         </div>
                         <div class="form-group">
@@ -147,13 +151,13 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <?php if (!empty($formErrors["discount"])) { ?>
+                                    <?php if (!empty($formErrors["discount"])) { ?>
                                     <ul style="color: red">
-                                        <?php foreach ($formErrors["discount"] as $errorMessage) { ?>
+                                    <?php foreach ($formErrors["discount"] as $errorMessage) { ?>
                                             <li class="error"><?php echo $errorMessage; ?></li>
-                                        <?php } ?>
+    <?php } ?>
                                     </ul>
-                                <?php } ?>
+<?php } ?>
                             </div>
                         </div>
                     </fieldset>
@@ -165,13 +169,13 @@
                                 <input type="file" name="photo" class="form-control">
                             </div>
                             <div class="col-md-4">
-                                <?php if (!empty($formErrors["photo"])) { ?>
+                                    <?php if (!empty($formErrors["photo"])) { ?>
                                     <ul style="color: red">
-                                        <?php foreach ($formErrors["photo"] as $errorMessage) { ?>
+                                    <?php foreach ($formErrors["photo"] as $errorMessage) { ?>
                                             <li class="error"><?php echo $errorMessage; ?></li>
-                                        <?php } ?>
+    <?php } ?>
                                     </ul>
-                                <?php } ?>
+<?php } ?>
                             </div>
                         </div>
                     </fieldset>
@@ -183,13 +187,13 @@
                                 <textarea name="description" class="form-control" rows="5"><?php echo isset($formData["description"]) ? htmlspecialchars($formData["description"]) : ""; ?></textarea>
                             </div>
                             <div class="col-md-4">
-                                <?php if (!empty($formErrors["description"])) { ?>
+                                    <?php if (!empty($formErrors["description"])) { ?>
                                     <ul style="color: red">
-                                        <?php foreach ($formErrors["description"] as $errorMessage) { ?>
+                                    <?php foreach ($formErrors["description"] as $errorMessage) { ?>
                                             <li class="error"><?php echo $errorMessage; ?></li>
-                                        <?php } ?>
+    <?php } ?>
                                     </ul>
-                                <?php } ?>
+<?php } ?>
                             </div>
                         </div>
                         <div class="form-group">
@@ -198,13 +202,13 @@
                                 <textarea name="specification" class="form-control" rows="5"><?php echo isset($formData["specification"]) ? htmlspecialchars($formData["specification"]) : ""; ?></textarea>
                             </div>
                             <div class="col-md-4">
-                                <?php if (!empty($formErrors["specification"])) { ?>
+                                    <?php if (!empty($formErrors["specification"])) { ?>
                                     <ul style="color: red">
-                                        <?php foreach ($formErrors["specification"] as $errorMessage) { ?>
+                                    <?php foreach ($formErrors["specification"] as $errorMessage) { ?>
                                             <li class="error"><?php echo $errorMessage; ?></li>
-                                        <?php } ?>
+    <?php } ?>
                                     </ul>
-                                <?php } ?>
+<?php } ?>
                             </div>
                         </div>
                     </fieldset>

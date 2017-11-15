@@ -29,9 +29,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3 jumbotron">
                                 <strong>
-                                    <?php echo htmlspecialchars($oneNews['id']); ?> -
-                                    <?php echo htmlspecialchars($oneNews['section_id']); ?> / 
-                                    <?php echo htmlspecialchars($oneNews['title']); ?>
+                                    <?php echo htmlspecialchars($oneNews['id']); ?> / <?php echo htmlspecialchars($oneNews['title']); ?>
                                 </strong>
                             </div>
                         </div>

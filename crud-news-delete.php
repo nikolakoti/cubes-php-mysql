@@ -1,9 +1,10 @@
 <?php
+
 session_start();
 require_once __DIR__ . '/models/m_users.php';
 
 
-if(!isUserLoggedIn()) {
+if (!isUserLoggedIn()) {
     header('location: /login.php');
     die();
 }
@@ -18,6 +19,12 @@ if (empty($_GET['id'])) {
 $id = (int) $_GET['id'];
 
 $oneNews = newsFetchOneById($id);
+
+//$sectionList = sectionsGetList();
+
+
+
+
 
 
 if (empty($oneNews)) {

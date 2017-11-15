@@ -15,13 +15,14 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>
-                    CRUD News - Edit news # <?php echo htmlspecialchars($oneNews['id']); ?>
+                    CRUD News - Edit news # <?php echo htmlspecialchars($oneNews['id']); ?> /
+                        <?php echo htmlspecialchars($oneNews['title']); ?> 
                     
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" >
                     <input type="hidden" name="task" value="save">
                     <fieldset>
                         <legend>General Data</legend>
@@ -86,16 +87,22 @@
                         <legend>Photo</legend>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
-                                <img src="/skins/tema/img/portfolio/enkel-home-blue.png" class="img-responsive">
+                                <img src="/uploads/news/<?php echo htmlspecialchars($oneNews['photo_filename']); ?>" class="img-responsive">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Change Photo</label>  
                             <div class="col-md-5">
-                                <input type="file" class="form-control">
+                                <input type="file" name="photo" class="form-control">
                             </div>
                             <div class="col-md-4">
-
+                            <?php if (!empty($formErrors["photo"])) { ?>
+                                    <ul style="color: red">
+                                        <?php foreach ($formErrors["photo"] as $errorMessage) { ?>
+                                            <li class="error"><?php echo $errorMessage; ?></li>
+                                        <?php } ?>
+                                    </ul>
+                                <?php } ?>
                             </div>
                         </div>
                     </fieldset>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2017 at 03:40 AM
+-- Generation Time: Nov 15, 2017 at 02:34 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -51,7 +51,8 @@ INSERT INTO `brands` (`id`, `title`, `website_url`) VALUES
 (16, 'Siemens', ''),
 (31, 'Jazz Speakers', 'http://www.jazzspeakers.com'),
 (33, 'Panasonic', 'https://www.panasonic.com/'),
-(52, 'Nokia', 'https://www.nokia.com/');
+(52, 'Nokia', 'https://www.nokia.com/'),
+(53, 'Dell', 'http://www.dell.com/en-us/');
 
 -- --------------------------------------------------------
 
@@ -112,6 +113,7 @@ CREATE TABLE `news` (
   `id` int(11) NOT NULL,
   `section_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
+  `photo_filename` varchar(255) DEFAULT NULL,
   `description` text,
   `content` longtext,
   `created_at` datetime DEFAULT NULL
@@ -121,16 +123,14 @@ CREATE TABLE `news` (
 -- Dumping data for table `news`
 --
 
-INSERT INTO `news` (`id`, `section_id`, `title`, `description`, `content`, `created_at`) VALUES
-(4, 4, 'Islandski bend GusGus u Beogradu', '', '', '0000-00-00 00:00:00'),
-(13, 1, 'Zvezda u finalu Lige Evrope', '', '', '0000-00-00 00:00:00'),
-(14, 1, 'Jokic ponovo najbolji', '', '', '0000-00-00 00:00:00'),
-(17, 3, 'Pucnjava u Brace Jerkovic', '', '', '0000-00-00 00:00:00'),
-(18, 5, 'Povoljni aranzmani', '', '', '0000-00-00 00:00:00'),
-(19, 8, 'Srbija na pravom putu', '', '', '0000-00-00 00:00:00'),
-(21, 7, 'Test', '', '', '0000-00-00 00:00:00'),
-(22, 9, 'Djule Van Gogh promenio ime benda u \"Vincent\"', '', '', '0000-00-00 00:00:00'),
-(23, 6, 'Aleksandar Vucic ugostio Deda Mraza', 'Prilikom posete, najpoznatiji Deda je svom unuku obecao da ce Srbija 2018. biti jos Brza, Jaca i Bolja!', '', '0000-00-00 00:00:00');
+INSERT INTO `news` (`id`, `section_id`, `title`, `photo_filename`, `description`, `content`, `created_at`) VALUES
+(4, 4, 'Islandski bend GusGus u Beogradu', NULL, '', '', '0000-00-00 00:00:00'),
+(13, 1, 'Zvezda u finalu Lige Evrope', NULL, '', '', '0000-00-00 00:00:00'),
+(18, 5, 'Povoljni aranzmani', NULL, '', '', '0000-00-00 00:00:00'),
+(19, 8, 'Srbija na pravom putu', NULL, '', '', '0000-00-00 00:00:00'),
+(21, 7, 'Test', NULL, '', '', '0000-00-00 00:00:00'),
+(26, 1, 'Nikola Jokic igrac nedelje Zapadne konferencije', '26_Nikola Jokic.jpg', '', '', '0000-00-00 00:00:00'),
+(27, 6, 'DAÄŒIÄ† U NJUJORKU', '27_dacic.jpg', '', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -211,8 +211,8 @@ INSERT INTO `products` (`id`, `brand_id`, `title`, `photo_filename`, `descriptio
 (44, 1, 'iPod Nano', NULL, 'iPod Nano', NULL, '9800.00', 3, NULL, 0, '0.00', '2017-11-23 12:23:31'),
 (45, 2, 'Pegla 1200W', NULL, 'Pegla 1200W', NULL, '3200.00', 1, 99, 0, '0.00', '2017-11-22 08:16:11'),
 (46, 31, 'Jazz Speakers J8902', '46_JS-J8902.jpg', '', '', '4000.00', 0, 8, 0, '0.00', '0000-00-00 00:00:00'),
-(51, 52, 'Nokia 3310', '51-nokia-3310-old-gol_1712908b.jpg', '', '', '2500.00', 0, 1, 0, '0.00', '0000-00-00 00:00:00'),
-(52, 3, 'Bosch Compact 2200W AC Dryer', '52_31PUB-PlA8L.jpg', '', '', '3000.00', 0, 6, 0, '0.00', '0000-00-00 00:00:00');
+(51, 52, 'Nokia 3310', '51_nokia-3310-old-gol_1712908b.jpg', '', '', '2500.00', 0, 1, 0, '0.00', '0000-00-00 00:00:00'),
+(52, 53, 'Dell Inspirion 3537', '52_dell inspirion 3537.jpg', 'Dell Inspiron 3537 je visokokvalitetan model laptopa koji je namenjen savremenom korisniku za Å¡irok spektar aktivnosti. Intel i5-4200U procesor sa dva jezgra, memorija od 4GB DDR3 i hard disk od 500 GB zadovoljiÄ‡e i najzahtevnije korisnike. Web kamera od 1Mpix sa ugraÄ‘enim mikrofonom pruÅ¾a novu dimenziju VaÅ¡im Skype razgovorima. Ovaj model karakteriÅ¡e Å¡estoÄ‡elijska baterija sa dugim vekom trajanja koja pruÅ¾a veÄ‡u mobilost. Tastatura sa izdvojenim numeriÄkim delom i TouchPad olakÅ¡avaju unos podataka. Brojne opcije za povezivanje omoguÄ‡avaju laku razmenu podataka. Laptop Dell Inspiron 3537 pravi izbor za one koji oÄekuju odliÄne performanse.', 'Model 	Inspiron 3537\r\nProcesor 	Intel Core i5-4200U 1.6GHz (turbo do 2.6GHz, 3MB cache, 2 jezgra)\r\nMemorija 	4GB DDR3 1600MHz\r\nHard disk 	500GB SATA 5400rpm\r\nGrafiÄka kartica 	AMD Radeon HD 8670M 1GB DDR3\r\nEkran 	15.6\" LED backlight HD 1366x768\r\nOptiÄki ureÄ‘aj 	DVD Super Multi DL\r\nMreÅ¾a 	10/100 Mbps, Wi-Fi 802.11b/g/n, Bluetooth 4.0\r\nPovezivanje 	2x USB 3.0, 2x USB 2.0, HDMI, audio izlaz/ulaz\r\nWeb kamera 	1Mpix Widescreen HD, sa mikrofonom\r\nNaÄin unosa podataka 	Tastatura sa izdvojenim numeriÄkim delom, TouchPad\r\nBaterija 	6-cell Li-Ion\r\nOperativni sistem 	Linux Ubuntu 12.04\r\nBoja 	Crna\r\nMasa 	2.4 kg', '49990.00', 0, 7, 0, '0.00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -356,25 +356,25 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `polaznici`
@@ -398,7 +398,7 @@ ALTER TABLE `product_tags`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tags`
