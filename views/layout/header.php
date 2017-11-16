@@ -2,6 +2,8 @@
 
 <?php require_once __DIR__ . '/../../models/m_categories.php'; ?> 
 
+<?php require_once __DIR__ . '/../../models/m_sections.php'; ?> 
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,16 +72,30 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kategorije</a>
                                         <ul class="dropdown-menu" role="menu">
-                                            
+
                                             <?php foreach (categoriesFetchAll() as $categoryInMenu) { ?>
-                                            <li>
-                                                <a href="/category.php?id=<?php echo htmlspecialchars($categoryInMenu['id']); ?>">
-                                                    <?php echo htmlspecialchars($categoryInMenu['title']); ?></a>
-                                            </li>
-                                            <?php }?>
-                                            
+                                                <li>
+                                                    <a href="/category.php?id=<?php echo htmlspecialchars($categoryInMenu['id']); ?>">
+                                                        <?php echo htmlspecialchars($categoryInMenu['title']); ?></a>
+                                                </li>
+                                            <?php } ?>
+
                                         </ul>
                                     </li>
+                                    <li>
+                                        <a href="/all-news.php">Vesti</a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sekcije</a>
+                                        <ul class="dropdown-menu" role="menu">
+
+                                            <?php foreach (sectionsFetchAll() as $sectionInMenu) { ?>
+                                                <li>
+                                                    <a href="/news-section.php?id=<?php echo htmlspecialchars($sectionInMenu['id']); ?>">
+                                                        <?php echo htmlspecialchars($sectionInMenu['title']); ?></a>
+                                                </li> 
+                                            <?php } ?>
+                                        </ul>
                                     <li>
                                         <a href="/sale.php"><i class="fa fa-star"></i> Akcija</a>
                                     </li>

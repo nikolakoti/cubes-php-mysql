@@ -235,7 +235,7 @@ if (isset($_POST["title"]) && $_POST["title"] !== '') {
 
             productsUpdateOneById($product['id'], $formData);
             
-            if(isset($_FILES['photo'])) {
+            if(isset($_FILES['photo']) && empty($_FILES["photo"]['error'])) {
                 
                 //obrisemo staru sliku 
                 

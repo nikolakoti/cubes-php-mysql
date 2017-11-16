@@ -166,7 +166,7 @@ function productsFetchAllByPage ($page, $rowsPerPage) {
 
 function productsFetchAllByCategory ($categoryId) {
     
-    $query = $query = "SELECT "
+    $query = "SELECT "
             . "`products`.*, "
             . "`categories`.`title` AS category_title, "
             . "`brands`.`title` AS brand_title "

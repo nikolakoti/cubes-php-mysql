@@ -144,6 +144,8 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
                 newsUpdatePhotoFileName($oneNews['id'], $newPhotoFileName);
 
                 newsFileRedirect();
+            
+                
             } else {
 
                 $formErrors['photo'][] = 'Doslo je do greske prilikom upload-a';

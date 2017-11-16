@@ -91,9 +91,13 @@ function sectionsGetCount() {
 
 function sectionsGetList() {
 
-    $query = "SELECT `sections`.* "
-            . "FROM `sections` "
-            . "ORDER BY `sections`.`title` ASC; ";
+    $query = "SELECT 
+	`sections`.`id`,
+	`sections`.`title` AS section_title 
+FROM 
+	`sections`
+ORDER BY 
+	`sections`.`title` ";
 
     $sections = dbFetchAll($query);
 
@@ -104,13 +108,11 @@ function sectionsGetList() {
 
 
 
-        $sectionList[$section['id']] = $section['title'];
+        $sectionList[$section['id']] = $section['section_title'];
     }
 
     return $sectionList;
 }
-
-
 
 function sectionsFileRedirect() {
 

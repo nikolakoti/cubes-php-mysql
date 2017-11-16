@@ -154,3 +154,63 @@ function newsFileRedirect() {
     header('Location:/crud-' . $newEntityName . '-list.php');
     die();
 }
+
+
+function newsFetchAllByPage ($page, $rowsPerPage) {
+    
+    $query =  "SELECT `news`.*, "
+            . "`sections`.`title` AS section_title "
+            . "FROM `news` "
+            . "LEFT JOIN `sections` ON `news`.`section_id` = `sections`.`id` ";
+    
+    $limit = $rowsPerPage; 
+    $offset = ($page - 1) * $rowsPerPage; 
+    
+    $query .= "LIMIT " . $limit . " OFFSET " . $offset; 
+    
+    return dbFetchAll($query);
+    
+}
+
+function newsFetchAllBySection ($sectionId) {
+    
+    $query =  "SELECT `news`.*, "
+            . "`sections`.`title` AS section_title "
+            . "FROM `news` "
+            . "LEFT JOIN `sections` ON `news`.`section_id` = `sections`.`id`"
+            . "WHERE `news`.`section_id` = '" . dbEscape($sectionId). "'";
+    
+    return dbFetchAll($query);
+    
+    
+}
+
+
+function newsGetCountBySection ($sectionId) {
+    
+    $query = "SELECT "
+            . "COUNT(news.id)"
+            . "FROM `news` "
+            . "LEFT JOIN `sections` ON `news`.`section_id` = `sections`.`id` "
+            . "WHERE `news`.`section_id` = '" . dbEscape($sectionId). "'";
+
+    return dbFetchColumn($query);
+} 
+
+function newsFetchAllBySectionByPage ($sectionId, $page, $rowsPerPage) {
+    
+    
+    $query = "SELECT `news`.*, "
+            . "`sections`.`title` AS section_title "
+            . " FROM `news` "
+            . " LEFT JOIN `sections` ON `news`.`section_id` = `sections`.`id` "
+            . " WHERE `news`.`section_id` = '" . dbEscape($sectionId). "' ";
+    
+    $limit = $rowsPerPage; 
+    $offset = ($page - 1) * $rowsPerPage; 
+    
+    $query .= "LIMIT " . $limit . " OFFSET " . $offset; 
+
+    return dbFetchAll($query);
+}
+
