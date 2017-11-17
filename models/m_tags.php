@@ -1,46 +1,13 @@
 <?php
 
-
 require_once __DIR__ . '/m_database.php';
-
-
-/**
- * 
- * @param string $username
- * @param string $password
- * @return boolean TRUE if username and password are ok, FALSE otherwise
- */
-function checkCredentials($username, $password) {
-	
-	if ($username !== 'cubes') {
-		return false;
-	}
-	
-	if (md5($password) !== 'd5908e4aa76277878259ed57c19c5f78') {
-		return false;
-	}
-	
-	return true;
-}
-
-/**
- * @return boolean
- */
-function isUserLoggedIn() {
-	
-	if (empty($_SESSION['user_is_logged_in'])) {
-		return false;
-	} 
-	
-	return true;
-} 
 
 /**
  * 
  * @return array Aarray of associative arrays that represent rows
  */
-function usersFetchAll() {
-    $query = "SELECT `users`.* FROM `users`";
+function tagsFetchAll() {
+    $query = "SELECT `tags`.* FROM `tags`";
 
 
     return dbFetchAll($query);
@@ -50,10 +17,10 @@ function usersFetchAll() {
  * @param scalar $id
  * @return array Associative array that represent one row
  */
-function usersFetchOneById($id) {
+function tagsFetchOneById($id) {
 
-    $query = "SELECT `users`.* "
-            . "FROM `users` "
+    $query = "SELECT `tags`.* "
+            . "FROM `tags` "
             . "WHERE `id` = '" . dbEscape($id) . "'";
 
     return dbFetchOne($query);
@@ -63,9 +30,9 @@ function usersFetchOneById($id) {
  * @param int $id
  * @return int Affected rows
  */
-function usersDeleteOneById($id) {
+function tagsDeleteOneById($id) {
 
-    $query = "DELETE FROM `users` "
+    $query = "DELETE FROM `tags` "
             . "WHERE `id` = '" . dbEscape($id) . "'";
 
     return dbQuery($query);
@@ -75,12 +42,8 @@ function usersDeleteOneById($id) {
  * @param array $data Row to insert, associative array
  * @return type
  */
-function usersInsertOne(array $data) {
+function tagsInsertOne(array $data) {
 
-    $data['created_at'] = date ('Y-m-d H:i:s');
-    
-    $data['password'] = md5($data['password']);
-    
     $columnsPart = "(`" . implode('`, `', array_keys($data)) . "`)";
 
     $values = array();
@@ -91,7 +54,7 @@ function usersInsertOne(array $data) {
 
     $valuesPart = "(" . implode(', ', $values) . ")";
 
-    $query = "INSERT INTO `users` " . $columnsPart . " VALUES " . $valuesPart;
+    $query = "INSERT INTO `tags` " . $columnsPart . " VALUES " . $valuesPart;
 
 
     dbQuery($query);
@@ -99,7 +62,7 @@ function usersInsertOne(array $data) {
     return dbLastInsertId();
 }
 
-function usersUpdateOneById($id, $data) {
+function tagsUpdateOneById($id, $data) {
 
     $setParts = array();
 
@@ -109,7 +72,7 @@ function usersUpdateOneById($id, $data) {
 
     $setPart = implode(',', $setParts);
 
-    $query = "UPDATE `users` SET " . $setPart . " WHERE `id` = '" . dbEscape($id) . "'";
+    $query = "UPDATE `tags` SET " . $setPart . " WHERE `id` = '" . dbEscape($id) . "'";
 
     return dbQuery($query);
 }
@@ -117,20 +80,20 @@ function usersUpdateOneById($id, $data) {
 /**
  * @return int Count of all rows in table
  */
-function usersGetCount() {
+function tagsGetCount() {
     $link = dbGetLink();
 
-    $query = "SELECT COUNT(`id`) FROM `users`";
+    $query = "SELECT COUNT(`id`) FROM `tags`";
 
     return dbFetchColumn($query);
 }
 
-function usersFileRedirect() {
+function tagsFileRedirect() {
 
 
-    $users = "users";
+    $tags = "tags";
 
-    switch ($users) {
+    switch ($tags) {
 
         case "brands":
             $newEntityName = 'brand';
@@ -147,9 +110,8 @@ function usersFileRedirect() {
         case "sections":
             $newEntityName = 'section';
             break;
-        case "users":
-            $newEntityName = 'user';
-            break;
+        case 'tags':
+            $newEntityName = 'tag';
         default:
             $newEntityName = 'news';
             break;
@@ -159,11 +121,15 @@ function usersFileRedirect() {
     die();
 }
 
-function usersFetchOneByUsername($username) {
 
-    $query = "SELECT `users`.* "
-            . "FROM `users` "
-            . "WHERE `username` = '" . dbEscape($username) . "'";
+function tagsFetchAllByProduct ($productId) {
+    
+    $query = "SELECT `tags`.* FROM `tags` "
+            . "JOIN 
+	product_tags ON tags.id = product_tags.tag_id
+WHERE 
+	product_tags.product_id = '" . dbEscape($productId) . "'";
 
-    return dbFetchOne($query);
+
+    return dbFetchAll($query);
 }
