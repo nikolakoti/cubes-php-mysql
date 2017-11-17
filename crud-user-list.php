@@ -10,6 +10,14 @@ if (!isUserLoggedIn()) {
 
 require_once __DIR__ . '/models/m_users.php';
 
+
+if (isset($_SESSION['system_message'])) {
+    
+    $systemMesage = $_SESSION['system_message'];
+    
+    unset ($_SESSION['system_message']);
+}
+
 $users = usersFetchAll();
 
 require_once __DIR__ . '/views/layout/header.php';

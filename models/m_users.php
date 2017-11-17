@@ -1,39 +1,41 @@
 <?php
 
-
 require_once __DIR__ . '/m_database.php';
-
 
 /**
  * 
  * @param string $username
  * @param string $password
- * @return boolean TRUE if username and password are ok, FALSE otherwise
+ * @return array User row if username and password are ok, FALSE otherwise
  */
 function checkCredentials($username, $password) {
-	
-	if ($username !== 'cubes') {
-		return false;
-	}
-	
-	if (md5($password) !== 'd5908e4aa76277878259ed57c19c5f78') {
-		return false;
-	}
-	
-	return true;
+
+    $user = usersFetchOneByUsername($username);
+
+    if (!empty($user)) {
+
+        if (md5($password) == $user['password']) {
+            return $user;
+        }
+    }
+
+
+
+
+    return false;
 }
 
 /**
  * @return boolean
  */
 function isUserLoggedIn() {
-	
-	if (empty($_SESSION['user_is_logged_in'])) {
-		return false;
-	} 
-	
-	return true;
-} 
+
+    if (empty($_SESSION['logged_in_user'])) {
+        return false;
+    }
+
+    return true;
+}
 
 /**
  * 
@@ -77,10 +79,10 @@ function usersDeleteOneById($id) {
  */
 function usersInsertOne(array $data) {
 
-    $data['created_at'] = date ('Y-m-d H:i:s');
-    
+    $data['created_at'] = date('Y-m-d H:i:s');
+
     $data['password'] = md5($data['password']);
-    
+
     $columnsPart = "(`" . implode('`, `', array_keys($data)) . "`)";
 
     $values = array();

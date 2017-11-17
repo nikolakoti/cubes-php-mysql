@@ -90,9 +90,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
 		$formData["email"] = trim($formData["email"]);
 		
 		
-	} else {//Ovaj else ide samo ako je polje obavezno
-		$formErrors["email"][] = "Polje email je obavezno";
-	}
+	} 
 	
 	if (isset($_POST["first_name"]) && $_POST["first_name"] !== '') {
 		//Dodavanje parametara medju podatke u formi
@@ -115,9 +113,10 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
 		//Uradi akciju koju je korisnik trazio
 		
 		usersUpdateOneById($user['id'], $formData);
-		header('Location: /crud-user-list.php');
 		
-		die();
+                $_SESSION['system_message'] = 'Uspesno ste sacuvali korisnika';
+                
+                usersFileRedirect();
 	}
 }
 
