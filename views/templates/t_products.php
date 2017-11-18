@@ -29,12 +29,29 @@
 
                 <?php if ($page != $i) { ?>
                     <li><a href="/products.php?page=<?php echo ($i); ?>"><?php echo ($i); ?></a></li>
-                    <?php } else { ?>
+                <?php } else { ?>
                     <li class="active"><span><?php echo ($i); ?></span></li>
+                        <?php } ?>
                     <?php } ?>
-                <?php } ?><li><a href="">Next</a></li>
+
+            <?php if (($page != $i)) { ?>
+                <li><a href="/products.php?page=<?php echo ($page - 1); ?>"> << </a></li>
+                <?php }?>
                 
-                    
+            
+
+            <?php if (($page != $i) && ($page < $totalPages)) { ?>
+                <li><a href="/products.php?page=<?php echo ($page + 1); ?>"> >> </a></li>
+            <?php } ?>
+
+
+
+            <?php if ($page == $totalPages) { ?>
+                <li><a href="/products.php?page=<?php echo ($page = $totalPages / $totalPages); ?>">Back to First page</a></li>
+            <?php } ?>
+
+
+
         </ul>
     </div>
 </div>
