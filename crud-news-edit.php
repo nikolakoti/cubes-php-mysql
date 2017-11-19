@@ -23,6 +23,8 @@ $sectionList = sectionsGetList();
 
 
 
+
+
 if (empty($oneNews)) {
     die('Izabrana vest ne postoji!');
 }

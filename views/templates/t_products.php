@@ -33,21 +33,21 @@
                     <li class="active"><span><?php echo ($i); ?></span></li>
                         <?php } ?>
                     <?php } ?>
-
-            <?php if (($page != $i)) { ?>
-                <li><a href="/products.php?page=<?php echo ($page - 1); ?>"> << </a></li>
-                <?php }?>
+                    
+                    
+                    
+                <?php if ($page > 1) { ?>
+                <li><a href="/products.php?page=<?php echo ($previousPage = $page-1); ?>"> << </a></li>
                 
+                <?php }?>
+
+                <?php if ($page != $totalPages) { ?>
+                <li><a href="/products.php?page=<?php echo ($nextPage = $page+1); ?>"> >> </a></li>
+                
+                <?php }?>
             
-
-            <?php if (($page != $i) && ($page < $totalPages)) { ?>
-                <li><a href="/products.php?page=<?php echo ($page + 1); ?>"> >> </a></li>
-            <?php } ?>
-
-
-
-            <?php if ($page == $totalPages) { ?>
-                <li><a href="/products.php?page=<?php echo ($page = $totalPages / $totalPages); ?>">Back to First page</a></li>
+                <?php if ($page == $totalPages) { ?>
+                <li><a href="/products.php?page=<?php echo ($firstPage = $totalPages / $totalPages); ?>">Go to First Page</a></li>
             <?php } ?>
 
 

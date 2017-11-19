@@ -12,16 +12,22 @@ if (isset($_GET['page'])) {
     $page = (int) $_GET['page'];
 }
 
-
-
-
-$rowsPerPage = 12;
+$rowsPerPage = 4;
 
 
 $totalRows = productsGetCount();
 
 
 $totalPages = ceil($totalRows / $rowsPerPage);
+
+
+if ($page < 1) {
+    
+    $page = 1;
+} else if ($page > $totalPages) {
+    
+    $page = $totalPages;
+}
 
 
 

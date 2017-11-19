@@ -19,6 +19,17 @@ $totalRows = newsGetCount();
 $totalPages = ceil($totalRows / $rowsPerPage);
 
 
+if ($page < 1) {
+    
+    $page = 1;
+} else if ($page > $totalPages) {
+    
+    $page = $totalPages;
+}
+
+
+
+
 $news = newsFetchAllByPage($page, $rowsPerPage);
 
 

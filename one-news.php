@@ -21,7 +21,7 @@ if (empty($oneNews)) {
     die('Izabrana vest ne postoji');
 }
 
-sectionsFetchAll();
+$oneSection = sectionsFetchOneById($id);
 
 
 require_once __DIR__ . '/views/layout/header.php';

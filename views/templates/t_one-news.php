@@ -28,7 +28,7 @@
                             </li>
                             <li>
                                 <i class="glyphicon glyphicon-tags"></i> <span class="visible-md-inline visible-lg-inline">Section:</span> 
-                                <a href="/news-section.php?id=<?php echo htmlspecialchars($oneNews['section_id']); ?>"><?php echo htmlspecialchars($oneNews['section_id']); ?></a>
+                                <a href="/news-section.php?id=<?php echo htmlspecialchars($oneSection['id']); ?>"><?php echo htmlspecialchars($oneSection['title']); ?></a>
 
                             </li>
                         </ul>

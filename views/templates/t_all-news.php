@@ -21,7 +21,7 @@
                     <div class="media row">
                         <div class="col-sm-3">
                             <a class="media-photo" href="/one-news.php?id=<?php echo htmlspecialchars($oneNews['id']); ?>">
-                                <img src="/uploads/news/<?php echo htmlspecialchars($oneNews['photo_filename']); ?>" alt="<?php echo htmlspecialchars($oneNews['title']); ?>" class="media-object img-polaroid" />
+                                <img src="/uploads/news/<?php echo htmlspecialchars($oneNews['photo_filename']); ?>" alt="<?php echo htmlspecialchars($oneNews['title']); ?>" class="media-object img-polaroid" width="215" height="215" />
                             </a>
                         </div>
                         <div class="col-sm-9">
@@ -54,14 +54,33 @@
 
                 <div class="text-center">
                     <ul class="pagination pagination-centered">
-                        <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
+                         <?php for ($i = 1; $i <= $totalPages; $i++) { ?>
 
-                            <?php if ($page != $i) { ?>
-                                <li><a href="/all-news.php?page=<?php echo ($i); ?>"><?php echo ($i); ?></a></li>
-                            <?php } else { ?>
-                                <li class="active"><span><?php echo ($i); ?></span></li>
-                            <?php } ?>
+                <?php if ($page != $i) { ?>
+                    <li><a href="/all-news.php?page=<?php echo ($i); ?>"><?php echo ($i); ?></a></li>
+                <?php } else { ?>
+                    <li class="active"><span><?php echo ($i); ?></span></li>
                         <?php } ?>
+                    <?php } ?>
+                    
+                    
+                    
+                <?php if ($page > 1) { ?>
+                <li><a href="/all-news.php?page=<?php echo ($previousPage = $page-1); ?>"> << </a></li>
+                
+                <?php }?>
+
+                <?php if ($page != $totalPages) { ?>
+                <li><a href="/all-news.php?page=<?php echo ($nextPage = $page+1); ?>"> >> </a></li>
+                
+                <?php }?>
+            
+                <?php if ($page == $totalPages) { ?>
+                <li><a href="/all-news.php?page=<?php echo ($firstPage = $totalPages / $totalPages); ?>">Go to First Page</a></li>
+            <?php } ?>
+                
+                    
+
                     </ul>
                 </div>
             </div>
