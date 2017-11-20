@@ -4,7 +4,7 @@ require_once __DIR__ . '/m_database.php';
 
 /**
  * 
- * @return array Aarray of associative arrays that represent rows
+ * @return array Array of associative arrays that represent rows
  */
 function productsFetchAll() {
     $query = "SELECT "
@@ -181,7 +181,7 @@ function productsFetchAllByCategory ($categoryId) {
 
 function productsGetCountByCategory ($categoryId) {
     
-    $query = $query = "SELECT "
+    $query = "SELECT "
             . "COUNT(products.id)"
             . "FROM `products` "
             . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
@@ -195,7 +195,7 @@ function productsGetCountByCategory ($categoryId) {
 function productsFetchAllByCategoryByPage ($categoryId, $page, $rowsPerPage) {
     
     
-    $query = $query = "SELECT "
+    $query = "SELECT "
             . "`products`.*, "
             . "`categories`.`title` AS category_title, "
             . "`brands`.`title` AS brand_title "
@@ -210,4 +210,60 @@ function productsFetchAllByCategoryByPage ($categoryId, $page, $rowsPerPage) {
     $query .= "LIMIT " . $limit . " OFFSET " . $offset; 
 
     return dbFetchAll($query);
+}
+
+
+function productsOnSaleFetchAll () {
+    
+     $query = "SELECT "
+            . "`products`.*, "
+            . "`categories`.`title` AS category_title, "
+            . "`brands`.`title` AS brand_title "
+            . "FROM `products` "
+            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
+            . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id` "
+            . "WHERE `products`.`on_sale` = 1 "
+            . "ORDER BY `products`.`id` DESC "
+            . "LIMIT 4 ";
+            
+    
+    
+    return dbFetchAll($query);
+    
+    
+}
+
+function productsOnSaleGetCount () {
+    
+    $query = "SELECT "
+            . "COUNT(`products`.`id`) "
+            . "FROM `products` "
+            . "WHERE `products`.`on_sale` = 1 ";
+    
+    return dbFetchColumn($query);
+}
+
+
+
+function productsOnSaleFetchAllByPage ($page, $rowsPerPage) {
+    
+    $query = "SELECT "
+            . "`products`.*, "
+            . "`categories`.`title` AS category_title, "
+            . "`brands`.`title` AS brand_title "
+            . "FROM `products` "
+            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id`"
+            . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id`"
+            . "WHERE `products`.`on_sale` = 1 ";
+    
+    $limit = $rowsPerPage; 
+    
+    $offset = ($page - 1) * $rowsPerPage; 
+    
+    $query .= "LIMIT " . $limit . " OFFSET " . $offset; 
+    
+    return dbFetchAll($query);
+    
+    
+    
 }

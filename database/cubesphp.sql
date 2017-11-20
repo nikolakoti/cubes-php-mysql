@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 17, 2017 at 04:05 PM
+-- Host: 127.0.0.1
+-- Generation Time: Nov 21, 2017 at 12:10 AM
 -- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -214,7 +214,8 @@ INSERT INTO `products` (`id`, `brand_id`, `title`, `photo_filename`, `descriptio
 (45, 2, 'Pegla 1200W', NULL, 'Pegla 1200W', NULL, '3200.00', 1, 99, 0, '0.00', '2017-11-22 08:16:11'),
 (46, 31, 'Jazz Speakers J8902', '46_JS-J8902.jpg', '', '', '4000.00', 0, 8, 0, '0.00', '0000-00-00 00:00:00'),
 (51, 52, 'Nokia 3310', '51_nokia-3310-old-gol_1712908b.jpg', '', '', '2500.00', 0, 1, 0, '0.00', '0000-00-00 00:00:00'),
-(52, 53, 'Dell Inspirion 3537', '52_dell inspirion 3537.jpg', 'Dell Inspiron 3537 je visokokvalitetan model laptopa koji je namenjen savremenom korisniku za Å¡irok spektar aktivnosti. Intel i5-4200U procesor sa dva jezgra, memorija od 4GB DDR3 i hard disk od 500 GB zadovoljiÄ‡e i najzahtevnije korisnike. Web kamera od 1Mpix sa ugraÄ‘enim mikrofonom pruÅ¾a novu dimenziju VaÅ¡im Skype razgovorima. Ovaj model karakteriÅ¡e Å¡estoÄ‡elijska baterija sa dugim vekom trajanja koja pruÅ¾a veÄ‡u mobilost. Tastatura sa izdvojenim numeriÄkim delom i TouchPad olakÅ¡avaju unos podataka. Brojne opcije za povezivanje omoguÄ‡avaju laku razmenu podataka. Laptop Dell Inspiron 3537 pravi izbor za one koji oÄekuju odliÄne performanse.', 'Model 	Inspiron 3537\r\nProcesor 	Intel Core i5-4200U 1.6GHz (turbo do 2.6GHz, 3MB cache, 2 jezgra)\r\nMemorija 	4GB DDR3 1600MHz\r\nHard disk 	500GB SATA 5400rpm\r\nGrafiÄka kartica 	AMD Radeon HD 8670M 1GB DDR3\r\nEkran 	15.6\" LED backlight HD 1366x768\r\nOptiÄki ureÄ‘aj 	DVD Super Multi DL\r\nMreÅ¾a 	10/100 Mbps, Wi-Fi 802.11b/g/n, Bluetooth 4.0\r\nPovezivanje 	2x USB 3.0, 2x USB 2.0, HDMI, audio izlaz/ulaz\r\nWeb kamera 	1Mpix Widescreen HD, sa mikrofonom\r\nNaÄin unosa podataka 	Tastatura sa izdvojenim numeriÄkim delom, TouchPad\r\nBaterija 	6-cell Li-Ion\r\nOperativni sistem 	Linux Ubuntu 12.04\r\nBoja 	Crna\r\nMasa 	2.4 kg', '49990.00', 0, 7, 0, '0.00', '0000-00-00 00:00:00');
+(52, 53, 'Dell Inspirion 3537', '52_dell inspirion 3537.jpg', 'Dell Inspiron 3537 je visokokvalitetan model laptopa koji je namenjen savremenom korisniku za Å¡irok spektar aktivnosti. Intel i5-4200U procesor sa dva jezgra, memorija od 4GB DDR3 i hard disk od 500 GB zadovoljiÄ‡e i najzahtevnije korisnike. Web kamera od 1Mpix sa ugraÄ‘enim mikrofonom pruÅ¾a novu dimenziju VaÅ¡im Skype razgovorima. Ovaj model karakteriÅ¡e Å¡estoÄ‡elijska baterija sa dugim vekom trajanja koja pruÅ¾a veÄ‡u mobilost. Tastatura sa izdvojenim numeriÄkim delom i TouchPad olakÅ¡avaju unos podataka. Brojne opcije za povezivanje omoguÄ‡avaju laku razmenu podataka. Laptop Dell Inspiron 3537 pravi izbor za one koji oÄekuju odliÄne performanse.', 'Model 	Inspiron 3537\r\nProcesor 	Intel Core i5-4200U 1.6GHz (turbo do 2.6GHz, 3MB cache, 2 jezgra)\r\nMemorija 	4GB DDR3 1600MHz\r\nHard disk 	500GB SATA 5400rpm\r\nGrafiÄka kartica 	AMD Radeon HD 8670M 1GB DDR3\r\nEkran 	15.6\" LED backlight HD 1366x768\r\nOptiÄki ureÄ‘aj 	DVD Super Multi DL\r\nMreÅ¾a 	10/100 Mbps, Wi-Fi 802.11b/g/n, Bluetooth 4.0\r\nPovezivanje 	2x USB 3.0, 2x USB 2.0, HDMI, audio izlaz/ulaz\r\nWeb kamera 	1Mpix Widescreen HD, sa mikrofonom\r\nNaÄin unosa podataka 	Tastatura sa izdvojenim numeriÄkim delom, TouchPad\r\nBaterija 	6-cell Li-Ion\r\nOperativni sistem 	Linux Ubuntu 12.04\r\nBoja 	Crna\r\nMasa 	2.4 kg', '49990.00', 0, 7, 1, '10.00', '2017-11-20 00:00:00'),
+(53, 3, 'Bosch Pro-Salon Compact 2200W AC Dryer', '53-bosch.jpg', '', '', '4500.00', 0, 6, 1, '5.00', '2017-11-20 22:31:40');
 
 -- --------------------------------------------------------
 
@@ -310,7 +311,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `first_name`, `last_name`, `created_at`) VALUES
-(1, 'nikolakoti', 'd35fc7be9bf200cdd5af286d420311fa', 'nikola.kotarac@yahoo.com', 'Nikola', 'Kotarac', '2017-11-17 14:04:00'),
+(1, 'nikolakoti', '0eef09e1f4f3edf3d189a3f49ad4d20a', 'nikola.kotarac@yahoo.com', 'Nikola', 'Kotarac', '2017-11-17 14:04:00'),
 (4, 'cubes', 'd5908e4aa76277878259ed57c19c5f78', '', 'cubes', 'cubes', '2017-11-17 15:24:06');
 
 --
@@ -390,51 +391,61 @@ ALTER TABLE `users`
 --
 ALTER TABLE `brands`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
 --
 -- AUTO_INCREMENT for table `polaznici`
 --
 ALTER TABLE `polaznici`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
 --
 -- AUTO_INCREMENT for table `product_tags`
 --
 ALTER TABLE `product_tags`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -12,7 +12,7 @@ if (isset($_GET['page'])) {
     $page = (int) $_GET['page'];
 }
 
-$rowsPerPage = 4;
+$rowsPerPage = 8;
 
 
 $totalRows = productsGetCount();
