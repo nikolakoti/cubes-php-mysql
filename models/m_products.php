@@ -12,8 +12,8 @@ function productsFetchAll() {
             . "`categories`.`title` AS category_title, "
             . "`brands`.`title` AS brand_title "
             . "FROM `products` "
-            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id`"
-            . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id`";
+            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
+            . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id` ";
 
 
     return dbFetchAll($query);
@@ -266,4 +266,50 @@ function productsOnSaleFetchAllByPage ($page, $rowsPerPage) {
     
     
     
+}
+
+function productsFetchAllByBrand ($brandId) {
+    
+    $query = "SELECT "
+            . "`products`.*, "
+            . "`categories`.`title` AS category_title, "
+            . "`brands`.`title` AS brand_title "
+            . "FROM `products` "
+            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
+            . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id` "
+            . "WHERE `products`.`brand_id` = '" . dbEscape($brandId). "'";
+
+    return dbFetchAll($query);
+}
+
+function productsGetCountByBrand ($brandId) {
+    
+    $query = "SELECT "
+            . "COUNT(products.id)"
+            . "FROM `products` "
+            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
+            . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id` "
+            . "WHERE `products`.`brand_id` = '" . dbEscape($brandId). "'";
+
+    return dbFetchColumn($query);
+} 
+
+function productsFetchAllByBrandByPage ($brandId, $page, $rowsPerPage) {
+    
+    
+    $query = "SELECT "
+            . "`products`.*, "
+            . "`categories`.`title` AS category_title, "
+            . "`brands`.`title` AS brand_title "
+            . "FROM `products` "
+            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
+            . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id` "
+            . "WHERE `products`.`brand_id` = '" . dbEscape($brandId). "'";
+    
+    $limit = $rowsPerPage; 
+    $offset = ($page - 1) * $rowsPerPage; 
+    
+    $query .= "LIMIT " . $limit . " OFFSET " . $offset; 
+
+    return dbFetchAll($query);
 }

@@ -5,7 +5,7 @@
             <h2 class="page-title">
                 <span>
                     Proizvod - 
-                    <?php echo htmlspecialchars($product['brand_title']); ?>
+                    <?php echo htmlspecialchars($product['brand_title']); ?> /
                     <?php echo htmlspecialchars($product['title']); ?></span>
             </h2>
         </div>
@@ -33,7 +33,9 @@
                     <dl>
                         <dt>Brend:</dt>
                         <dd>
-                            <?php echo htmlspecialchars($product['brand_title']); ?>
+                             <a href="/brand.php?id=<?php echo htmlspecialchars($product['brand_id']); ?>">
+                                <?php echo htmlspecialchars($product['brand_title']); ?>
+                            </a>
                         </dd>
 
                         <dt>Kategorija:</dt>

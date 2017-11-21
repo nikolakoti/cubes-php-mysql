@@ -4,7 +4,7 @@ require_once __DIR__ . '/m_database.php';
 
 /**
  * 
- * @return array Aarray of associative arrays that represent rows
+ * @return array Array of associative arrays that represent rows
  */
 function sectionsFetchAll() {
     $query = "SELECT `sections`.* FROM `sections` "

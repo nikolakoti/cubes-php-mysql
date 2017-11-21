@@ -7,7 +7,8 @@ require_once __DIR__ . '/m_database.php';
  * @return array Array of associative arrays that represent rows
  */
 function brandsFetchAll() {
-    $query = "SELECT `brands`.* FROM `brands`";
+    $query = "SELECT `brands`.* "
+            . "FROM `brands`";
 
 
     return dbFetchAll($query);
@@ -137,4 +138,19 @@ function brandsFileRedirect() {
 
     header('Location:/crud-' . $newEntityName . '-list.php');
     die();
+}
+
+
+function brandsFetchRandom() {
+
+    $query = "SELECT `brands`.* "
+            . "FROM `brands` "
+            . "ORDER BY RAND (`brands`.`title`) "
+            . "LIMIT 6 ";
+
+   
+
+
+
+    return dbFetchAll($query);
 }
