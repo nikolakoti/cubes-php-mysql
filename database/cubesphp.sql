@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2017 at 04:48 PM
+-- Generation Time: Nov 22, 2017 at 10:04 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -126,7 +126,6 @@ INSERT INTO `news` (`id`, `section_id`, `title`, `photo_filename`, `description`
 (13, 1, 'Zvezda u finalu Lige Evrope', NULL, '', '', '0000-00-00 00:00:00'),
 (18, 5, 'Povoljni aranzmani', NULL, '', '', '0000-00-00 00:00:00'),
 (19, 8, 'Srbija na pravom putu', NULL, '', '', '0000-00-00 00:00:00'),
-(21, 7, 'Test', NULL, '', '', '0000-00-00 00:00:00'),
 (26, 1, 'TURBULENTAN LET', '26_zvezda.jpg', 'I u avionu se Zvezda spremala za Olimpijakos', '', '0000-00-00 00:00:00'),
 (27, 6, 'DAÄŒIÄ† U NJUJORKU', '27_dacic.jpg', '', '', '0000-00-00 00:00:00'),
 (28, 1, 'LAKNULO SVIMA U LIVERPULU', '28-klop.jpg', 'Klop izaÅ¡ao iz bolnice i odmah odrÅ¾ao trening', '', NULL),
@@ -215,9 +214,10 @@ INSERT INTO `products` (`id`, `brand_id`, `title`, `photo_filename`, `descriptio
 (51, 52, 'Nokia 3310', '51_nokia-3310-old-gol_1712908b.jpg', '', '', '2500.00', 0, 1, 0, '0.00', '0000-00-00 00:00:00'),
 (52, 53, 'Dell Inspirion 3537', '52_dell inspirion 3537.jpg', 'Dell Inspiron 3537 je visokokvalitetan model laptopa koji je namenjen savremenom korisniku za Å¡irok spektar aktivnosti. Intel i5-4200U procesor sa dva jezgra, memorija od 4GB DDR3 i hard disk od 500 GB zadovoljiÄ‡e i najzahtevnije korisnike. Web kamera od 1Mpix sa ugraÄ‘enim mikrofonom pruÅ¾a novu dimenziju VaÅ¡im Skype razgovorima. Ovaj model karakteriÅ¡e Å¡estoÄ‡elijska baterija sa dugim vekom trajanja koja pruÅ¾a veÄ‡u mobilost. Tastatura sa izdvojenim numeriÄkim delom i TouchPad olakÅ¡avaju unos podataka. Brojne opcije za povezivanje omoguÄ‡avaju laku razmenu podataka. Laptop Dell Inspiron 3537 pravi izbor za one koji oÄekuju odliÄne performanse.', 'Model 	Inspiron 3537\r\nProcesor 	Intel Core i5-4200U 1.6GHz (turbo do 2.6GHz, 3MB cache, 2 jezgra)\r\nMemorija 	4GB DDR3 1600MHz\r\nHard disk 	500GB SATA 5400rpm\r\nGrafiÄka kartica 	AMD Radeon HD 8670M 1GB DDR3\r\nEkran 	15.6\" LED backlight HD 1366x768\r\nOptiÄki ureÄ‘aj 	DVD Super Multi DL\r\nMreÅ¾a 	10/100 Mbps, Wi-Fi 802.11b/g/n, Bluetooth 4.0\r\nPovezivanje 	2x USB 3.0, 2x USB 2.0, HDMI, audio izlaz/ulaz\r\nWeb kamera 	1Mpix Widescreen HD, sa mikrofonom\r\nNaÄin unosa podataka 	Tastatura sa izdvojenim numeriÄkim delom, TouchPad\r\nBaterija 	6-cell Li-Ion\r\nOperativni sistem 	Linux Ubuntu 12.04\r\nBoja 	Crna\r\nMasa 	2.4 kg', '49990.00', 0, 7, 1, '10.00', '2017-11-20 00:00:00'),
 (53, 3, 'Bosch Pro-Salon Compact 2200W AC Dryer', '53-bosch.jpg', '', '', '4500.00', 0, 6, 1, '5.00', '2017-11-20 22:31:40'),
-(54, 4, 'Gorenje WA60065', '54-21385.png', '', '', '25000.00', 0, 10, 0, '0.00', '2017-11-21 15:41:25'),
 (55, 16, 'Siemens M55', '55-Siemens_M55_mobile_phone.jpg', '', '', '3000.00', 0, 1, 0, '0.00', '2017-11-21 16:07:36'),
-(56, 33, 'Panasonic SC-XH105', '56-SC-XH105_ALT01.png', '', '', '18900.99', 0, 8, 0, '0.00', '2017-11-22 16:13:21');
+(56, 33, 'Panasonic SC-XH105', '56-SC-XH105_ALT01.png', '', '', '18900.99', 0, 8, 0, '0.00', '2017-11-22 16:13:21'),
+(57, 4, 'dggsgl', '57-boxman.jpg', '', '', '25.00', 0, 11, 0, '0.00', '2017-11-22 20:18:57'),
+(58, 52, 'Nokia 3210', '58-1200px-Nokia_3210_3.jpg', '', '', '2500.00', 0, 1, 0, '0.00', '2017-11-22 21:11:37');
 
 -- --------------------------------------------------------
 
@@ -392,25 +392,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `polaznici`
@@ -422,7 +422,7 @@ ALTER TABLE `polaznici`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `product_tags`
@@ -434,7 +434,7 @@ ALTER TABLE `product_tags`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tags`
@@ -446,7 +446,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
