@@ -29,7 +29,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "delete") {
 
     brandsDeleteOneById($id);
 
-    
+     $_SESSION['system_message'] = 'Uspesno ste obrisali brend';
     
     brandsFileRedirect();
 }

@@ -123,6 +123,8 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
 
         newsUpdateOneById($oneNews['id'], $formData);
 
+         $_SESSION['system_message'] = 'Uspesno ste izmenili vest';
+        
         if (isset($_FILES['photo']) && empty($_FILES["photo"]['error'])) {
 
             //obrisemo staru sliku 
@@ -156,6 +158,10 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
 
             newsFileRedirect();
         }
+        
+       
+        
+        newsFileRedirect();
     }
 }
 

@@ -128,6 +128,8 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
             unset($formData['confirm_password']); // brisemo kljuc confirm_passsword jer ne postoji ta kolona u bazi
 		$newUserId = usersInsertOne($formData);
 			
+                 $_SESSION['system_message'] = 'Uspesno ste dodali korisnika';
+                
 		header('Location: /crud-user-list.php');
 		die();
 	}

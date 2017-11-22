@@ -63,7 +63,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 
         $newBrandId = brandsInsertOne($formData);
         
-           
+         $_SESSION['system_message'] = 'Uspesno ste dodali brend'; 
         
          brandsFileRedirect();
     }

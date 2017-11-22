@@ -114,7 +114,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
 		
 		usersUpdateOneById($user['id'], $formData);
 		
-                $_SESSION['system_message'] = 'Uspesno ste sacuvali korisnika';
+                $_SESSION['system_message'] = 'Uspesno ste sacuvali korisnika ' . $formData['username'];
                 
                 usersFileRedirect();
 	}

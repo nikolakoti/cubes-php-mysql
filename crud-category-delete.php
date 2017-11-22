@@ -29,6 +29,8 @@ if (isset($_POST["task"]) && $_POST["task"] == "delete") {
 
     categoriesDeleteOneById($id);
     
+     $_SESSION['system_message'] = 'Uspesno ste obrisali kategoriju';
+    
     categoriesFileRedirect();
 }
 

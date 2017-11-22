@@ -15,6 +15,9 @@ if (!isset($_GET['id'])) {
 
 $id = (int) $_GET['id'];
 
+ 
+
+
 $category = categoriesFetchOneById($id);
 
 if (empty($category)) {

@@ -72,7 +72,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
                 
             brandsUpdateOneById($brand['id'], $formData);
             
-              
+            $_SESSION['system_message'] = 'Uspesno ste izmenili brend';
             
             brandsFileRedirect();
 	}

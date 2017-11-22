@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>
-                    CRUD News - Edit news # <?php echo htmlspecialchars ($oneNews['section_id']); ?>   /
+                    CRUD News - Edit news # <?php echo htmlspecialchars ($oneNews['section_id']); ?> - <?php echo htmlspecialchars ($oneNews['section_title']); ?>  /
                         <?php echo htmlspecialchars($oneNews['title']); ?> 
                     
             </div>

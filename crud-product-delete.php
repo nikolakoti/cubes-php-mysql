@@ -27,15 +27,17 @@ if (empty($product)) {
 if (isset($_POST["task"]) && $_POST["task"] == "delete") {
 
     $photoFilePath = __DIR__ . "/uploads/products/" . $product['photo_filename']; 
-    
+    productsDeleteOneById($product['id']);
     if (file_exists($photoFilePath)) {
         
         unlink($photoFilePath);
         
     }
     
-    productsDeleteOneById($product['id']);
+    
 
+     $_SESSION['system_message'] = 'Uspesno ste obrisali proizvod';
+    
     productsFileRedirect();
 }
 

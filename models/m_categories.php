@@ -7,11 +7,7 @@ require_once __DIR__ . '/m_database.php';
  * @return array Array of associative arrays that represent rows
  */
 function categoriesFetchAll() {
-    $query = "SELECT `categories`.*, "
-            . "`groups`.`title` AS group_title "
-            . "FROM `categories` "
-            . "LEFT JOIN "
-            . "`groups` ON `categories`.`group_id` = `groups`. `id` ";
+    $query = "SELECT `categories`.*, `groups`.`title` AS group_title FROM `categories` JOIN `groups` ON `categories`.`group_id` = `groups`. `id` ";
             
 
 

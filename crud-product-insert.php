@@ -215,7 +215,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 
         $newProductId = productsInsertOne($formData);
         
-        
+         $_SESSION['system_message'] = 'Uspesno ste dodali proizvod';
 
         $newProductPhotoFileName = $newProductId . '-' . $photoFileName;
 

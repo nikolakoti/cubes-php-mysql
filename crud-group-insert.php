@@ -54,6 +54,8 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
     if (empty($formErrors)) {
 
         $newGroupId = groupsInsertOne($formData);
+        
+         $_SESSION['system_message'] = 'Uspesno ste dodali grupu';
 
         groupsFileRedirect();
     }

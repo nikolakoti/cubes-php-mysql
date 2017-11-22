@@ -235,6 +235,8 @@ if (isset($_POST["title"]) && $_POST["title"] !== '') {
 
             productsUpdateOneById($product['id'], $formData);
             
+            $_SESSION['system_message'] = 'Uspesno ste izmenili proizvod';
+            
             if(isset($_FILES['photo']) && empty($_FILES["photo"]['error'])) {
                 
                 //obrisemo staru sliku 

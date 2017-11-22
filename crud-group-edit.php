@@ -67,6 +67,8 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
     //Ukoliko nema gresaka 
     if (empty($formErrors)) {
         groupsUpdateOneById($group['id'], $formData);
+        
+        $_SESSION['system_message'] = 'Uspesno ste izmenili grupu';
 
         groupsFileRedirect();
     }

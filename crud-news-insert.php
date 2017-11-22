@@ -107,6 +107,8 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 
         $newNewsId = newsInsertOne($formData);
 
+         $_SESSION['system_message'] = 'Uspesno ste dodali vest';
+        
         $newNewsPhotoFileName = $newNewsId . '-' . $photoFileName;
 
         $destinationPath = __DIR__ . '/uploads/news/' . $newNewsPhotoFileName;

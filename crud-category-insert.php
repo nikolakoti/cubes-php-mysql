@@ -86,6 +86,8 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 
         $newCategoryId = categoriesInsertOne($formData);
 
+         $_SESSION['system_message'] = 'Uspesno ste dodali kategoriju';
+        
         categoriesFileRedirect();
     }
 }

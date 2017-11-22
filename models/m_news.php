@@ -23,9 +23,11 @@ function newsFetchAll() {
  */
 function newsFetchOneById($id) {
 
-    $query = "SELECT `news`.* "
+    $query = "SELECT `news`.*, "
+            . "`sections`.`title` AS section_title "
             . "FROM `news` "
-            . "WHERE `id` = '" . dbEscape($id) . "'";
+            . "LEFT JOIN `sections` ON `news`.`section_id` = `sections`. `id` "
+            . "WHERE `news`.`id` = '" . dbEscape($id) . "'";
 
     return dbFetchOne($query);
 }

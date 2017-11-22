@@ -54,6 +54,8 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 
         $newSectionId = sectionsInsertOne($formData);
 
+         $_SESSION['system_message'] = 'Uspesno ste dodali sekciju';
+        
         sectionsFileRedirect();
     }
 }
