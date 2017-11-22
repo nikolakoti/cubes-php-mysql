@@ -67,7 +67,7 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
     if (empty($formErrors)) {
         sectionsUpdateOneById($section['id'], $formData);
 
-         $_SESSION['system_message'] = 'Uspesno ste izmenili vest';
+         $_SESSION['system_message'] = 'Uspesno ste izmenili sekciju';
         sectionsFileRedirect();
     }
 }

@@ -148,7 +148,7 @@ function brandsFetchRandom() {
             . "`brands`.`id` "
             . "FROM `brands` "
             . "JOIN `products` ON `brands`.`id` = `products`.`brand_id` "
-            . "ORDER BY RAND (`brands`.`title`) "
+            . "ORDER BY RAND () "
             . "LIMIT 6 ";
     
     return dbFetchAll($query);
