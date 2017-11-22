@@ -143,14 +143,13 @@ function brandsFileRedirect() {
 
 function brandsFetchRandom() {
 
-    $query = "SELECT `brands`.* "
+    $query = "SELECT "
+            . "DISTINCT (`brands`.`title`), "
+            . "`brands`.`id` "
             . "FROM `brands` "
+            . "JOIN `products` ON `brands`.`id` = `products`.`brand_id` "
             . "ORDER BY RAND (`brands`.`title`) "
             . "LIMIT 6 ";
-
-   
-
-
-
+    
     return dbFetchAll($query);
 }

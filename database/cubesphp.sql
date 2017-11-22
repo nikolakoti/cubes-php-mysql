@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2017 at 04:20 PM
+-- Generation Time: Nov 22, 2017 at 04:48 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -216,7 +216,8 @@ INSERT INTO `products` (`id`, `brand_id`, `title`, `photo_filename`, `descriptio
 (52, 53, 'Dell Inspirion 3537', '52_dell inspirion 3537.jpg', 'Dell Inspiron 3537 je visokokvalitetan model laptopa koji je namenjen savremenom korisniku za Å¡irok spektar aktivnosti. Intel i5-4200U procesor sa dva jezgra, memorija od 4GB DDR3 i hard disk od 500 GB zadovoljiÄ‡e i najzahtevnije korisnike. Web kamera od 1Mpix sa ugraÄ‘enim mikrofonom pruÅ¾a novu dimenziju VaÅ¡im Skype razgovorima. Ovaj model karakteriÅ¡e Å¡estoÄ‡elijska baterija sa dugim vekom trajanja koja pruÅ¾a veÄ‡u mobilost. Tastatura sa izdvojenim numeriÄkim delom i TouchPad olakÅ¡avaju unos podataka. Brojne opcije za povezivanje omoguÄ‡avaju laku razmenu podataka. Laptop Dell Inspiron 3537 pravi izbor za one koji oÄekuju odliÄne performanse.', 'Model 	Inspiron 3537\r\nProcesor 	Intel Core i5-4200U 1.6GHz (turbo do 2.6GHz, 3MB cache, 2 jezgra)\r\nMemorija 	4GB DDR3 1600MHz\r\nHard disk 	500GB SATA 5400rpm\r\nGrafiÄka kartica 	AMD Radeon HD 8670M 1GB DDR3\r\nEkran 	15.6\" LED backlight HD 1366x768\r\nOptiÄki ureÄ‘aj 	DVD Super Multi DL\r\nMreÅ¾a 	10/100 Mbps, Wi-Fi 802.11b/g/n, Bluetooth 4.0\r\nPovezivanje 	2x USB 3.0, 2x USB 2.0, HDMI, audio izlaz/ulaz\r\nWeb kamera 	1Mpix Widescreen HD, sa mikrofonom\r\nNaÄin unosa podataka 	Tastatura sa izdvojenim numeriÄkim delom, TouchPad\r\nBaterija 	6-cell Li-Ion\r\nOperativni sistem 	Linux Ubuntu 12.04\r\nBoja 	Crna\r\nMasa 	2.4 kg', '49990.00', 0, 7, 1, '10.00', '2017-11-20 00:00:00'),
 (53, 3, 'Bosch Pro-Salon Compact 2200W AC Dryer', '53-bosch.jpg', '', '', '4500.00', 0, 6, 1, '5.00', '2017-11-20 22:31:40'),
 (54, 4, 'Gorenje WA60065', '54-21385.png', '', '', '25000.00', 0, 10, 0, '0.00', '2017-11-21 15:41:25'),
-(55, 16, 'Siemens M55', '55-Siemens_M55_mobile_phone.jpg', '', '', '3000.00', 0, 1, 0, '0.00', '2017-11-21 16:07:36');
+(55, 16, 'Siemens M55', '55-Siemens_M55_mobile_phone.jpg', '', '', '3000.00', 0, 1, 0, '0.00', '2017-11-21 16:07:36'),
+(56, 33, 'Panasonic SC-XH105', '56-SC-XH105_ALT01.png', '', '', '18900.99', 0, 8, 0, '0.00', '2017-11-22 16:13:21');
 
 -- --------------------------------------------------------
 
@@ -421,7 +422,7 @@ ALTER TABLE `polaznici`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `product_tags`
