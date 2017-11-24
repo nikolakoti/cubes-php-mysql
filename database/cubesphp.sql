@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2017 at 01:41 AM
+-- Generation Time: Nov 24, 2017 at 09:37 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -314,7 +314,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `first_name`, `last_name`, `photo_filename`, `created_at`) VALUES
 (1, 'nikolakoti', '0eef09e1f4f3edf3d189a3f49ad4d20a', 'nikola.kotarac@yahoo.com', 'Nikola', 'Kotarac', '1_boxman.jpg', '2017-11-17 14:04:00'),
-(4, 'cubes', 'd5908e4aa76277878259ed57c19c5f78', 'school@cubes.rs', 'cubes', 'cubes', '4_cubeslogo.jpg', '2017-11-17 15:24:06');
+(4, 'cubes', 'e42a26fb3e4649421106513af7993cff', 'school@cubes.rs', 'cubes', 'cubes', '4_cubeslogo.jpg', '2017-11-17 15:24:06');
 
 --
 -- Indexes for dumped tables

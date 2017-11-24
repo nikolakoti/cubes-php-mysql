@@ -21,7 +21,8 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <form action="" class="form-horizontal">
+                <form action="" method="post" class="form-horizontal">
+                    <input type="hidden" name="task" value="insert">
 
                     <fieldset>
                         <legend></legend>
@@ -29,19 +30,31 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">New Password</label>  
                             <div class="col-md-5">
-                                <input type="password" value="" class="form-control">
+                                <input type="password" name="password" value="" class="form-control">
                             </div>
                             <div class="col-md-4">
-
+                                <?php if (!empty($formErrors["password"])) { ?>
+                                    <ul style="color: red">
+                                        <?php foreach ($formErrors["password"] as $errorMessage) { ?>
+                                            <li class="error"><?php echo $errorMessage; ?></li>
+                                        <?php } ?>
+                                    </ul>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-3 control-label">Confirm new Password</label>  
                             <div class="col-md-5">
-                                <input type="password" value="" class="form-control">
+                                <input type="password" name="confirm_password" value="" class="form-control">
                             </div>
                             <div class="col-md-4">
-
+                                <?php if (!empty($formErrors["confirm_password"])) { ?>
+                                    <ul style="color: red">
+                                        <?php foreach ($formErrors["confirm_password"] as $errorMessage) { ?>
+                                            <li class="error"><?php echo $errorMessage; ?></li>
+                                        <?php } ?>
+                                    </ul>
+                                <?php } ?>
                             </div>
                         </div>
                     </fieldset>
