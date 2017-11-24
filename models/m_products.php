@@ -200,7 +200,7 @@ function productsFetchAllByCategoryByPage ($categoryId, $page, $rowsPerPage) {
             . "`categories`.`title` AS category_title, "
             . "`brands`.`title` AS brand_title "
             . "FROM `products` "
-            . "LEFT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
+            . "RIGHT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
             . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id` "
             . "WHERE `products`.`category_id` = '" . dbEscape($categoryId). "'";
     

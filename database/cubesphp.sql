@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2017 at 10:04 PM
+-- Generation Time: Nov 24, 2017 at 01:41 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -216,7 +216,6 @@ INSERT INTO `products` (`id`, `brand_id`, `title`, `photo_filename`, `descriptio
 (53, 3, 'Bosch Pro-Salon Compact 2200W AC Dryer', '53-bosch.jpg', '', '', '4500.00', 0, 6, 1, '5.00', '2017-11-20 22:31:40'),
 (55, 16, 'Siemens M55', '55-Siemens_M55_mobile_phone.jpg', '', '', '3000.00', 0, 1, 0, '0.00', '2017-11-21 16:07:36'),
 (56, 33, 'Panasonic SC-XH105', '56-SC-XH105_ALT01.png', '', '', '18900.99', 0, 8, 0, '0.00', '2017-11-22 16:13:21'),
-(57, 4, 'dggsgl', '57-boxman.jpg', '', '', '25.00', 0, 11, 0, '0.00', '2017-11-22 20:18:57'),
 (58, 52, 'Nokia 3210', '58-1200px-Nokia_3210_3.jpg', '', '', '2500.00', 0, 1, 0, '0.00', '2017-11-22 21:11:37');
 
 -- --------------------------------------------------------
@@ -305,6 +304,7 @@ CREATE TABLE `users` (
   `email` varchar(255) DEFAULT NULL,
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
+  `photo_filename` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -312,9 +312,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `first_name`, `last_name`, `created_at`) VALUES
-(1, 'nikolakoti', '0eef09e1f4f3edf3d189a3f49ad4d20a', 'nikola.kotarac@yahoo.com', 'Nikola', 'Kotarac', '2017-11-17 14:04:00'),
-(4, 'cubes', 'd5908e4aa76277878259ed57c19c5f78', '', 'cubes', 'cubes', '2017-11-17 15:24:06');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `first_name`, `last_name`, `photo_filename`, `created_at`) VALUES
+(1, 'nikolakoti', '0eef09e1f4f3edf3d189a3f49ad4d20a', 'nikola.kotarac@yahoo.com', 'Nikola', 'Kotarac', '1_boxman.jpg', '2017-11-17 14:04:00'),
+(4, 'cubes', 'd5908e4aa76277878259ed57c19c5f78', 'school@cubes.rs', 'cubes', 'cubes', '4_cubeslogo.jpg', '2017-11-17 15:24:06');
 
 --
 -- Indexes for dumped tables
@@ -446,7 +446,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

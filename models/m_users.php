@@ -169,3 +169,12 @@ function usersFetchOneByUsername($username) {
 
     return dbFetchOne($query);
 }
+
+function usersUpdatePhotoFileName($id, $photoFileName) {
+
+    $query = "UPDATE `users` "
+            . "SET `photo_filename` = '" . dbEscape($photoFileName) . "' "
+            . "WHERE `id` = '" . dbEscape($id) . "'";
+
+    return dbQuery($query);
+}

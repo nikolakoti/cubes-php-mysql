@@ -9,7 +9,7 @@ if (!isUserLoggedIn()) {
 }
 
 if (empty($_GET['id'])) {
-	die('Morate proslediti id');
+die('Morate proslediti id');
 }
 
 $id = (int) $_GET['id'];
@@ -17,7 +17,7 @@ $id = (int) $_GET['id'];
 $user = usersFetchOneById($id);
 
 if (empty($user)) {
-	die('Trazeni proizvod ne postoji');
+die('Trazeni korisnik ne postoji');
 }
 
 //ovde se prihvataju vrednosti polja, popisati sve kljuceve i pocetne vrednosti
