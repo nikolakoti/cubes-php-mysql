@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2017 at 09:37 PM
+-- Generation Time: Nov 25, 2017 at 02:18 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -313,8 +313,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `first_name`, `last_name`, `photo_filename`, `created_at`) VALUES
-(1, 'nikolakoti', '0eef09e1f4f3edf3d189a3f49ad4d20a', 'nikola.kotarac@yahoo.com', 'Nikola', 'Kotarac', '1_boxman.jpg', '2017-11-17 14:04:00'),
-(4, 'cubes', 'e42a26fb3e4649421106513af7993cff', 'school@cubes.rs', 'cubes', 'cubes', '4_cubeslogo.jpg', '2017-11-17 15:24:06');
+(1, 'nikolakoti', '0eef09e1f4f3edf3d189a3f49ad4d20a', 'nikola.kotarac@yahoo.com', 'Nikola', 'Kotarac', '1_boxman_1.jpg', '2017-11-17 14:04:00'),
+(4, 'cubes', 'd5908e4aa76277878259ed57c19c5f78', 'school@cubes.rs', 'cubes', 'cubes', '4_cubeslogo.jpg', '2017-11-17 15:24:06');
 
 --
 -- Indexes for dumped tables
@@ -392,25 +392,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `polaznici`
@@ -434,7 +434,7 @@ ALTER TABLE `product_tags`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tags`
@@ -446,7 +446,7 @@ ALTER TABLE `tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

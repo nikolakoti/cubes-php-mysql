@@ -41,13 +41,24 @@ if (isset($_POST["task"]) && $_POST["task"] == "insert") {
 		$formData["password"] = $_POST["password"];
 		
 		//Filtering 1
-		if (strlen($formData["password"]) < 5) {
+		if (mb_strlen($formData["password"]) < 5) {
                     $formErrors["password"][] = 'Password mora imati vise od 5 karaktera';
                 }
 		
                 if (md5($formData['password']) == $currentActivePassword ) {
                     
-                     $formErrors["password"][] = 'Uneli ste trenutno aktivnu sifru na Vasem profilu';
+                     $formErrors["password"][] = 'Uneli ste aktivnu sifru na Vasem profilu';
+                }
+                
+                $allUsers = usersFetchAll(); 
+                
+                foreach ($allUsers as $oneUser) {
+                    
+                    if (md5($formData['password']) == $oneUser['password'] ) {
+                        
+                        $formErrors['password'][] = 'Password je zauzet';
+                    }
+                    
                 }
 		
 	} else {

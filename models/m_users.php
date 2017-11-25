@@ -39,7 +39,7 @@ function isUserLoggedIn() {
 
 /**
  * 
- * @return array Aarray of associative arrays that represent rows
+ * @return array Array of associative arrays that represent rows
  */
 function usersFetchAll() {
     $query = "SELECT `users`.* FROM `users`";

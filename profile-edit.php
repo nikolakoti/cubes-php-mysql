@@ -17,9 +17,7 @@ $id = (int) $id;
 
 $user = usersFetchOneById($id); 
 
-if (empty($user)) {
-    die('Trazeni korisnik ne postoji');
-}
+
 
 
 
@@ -37,56 +35,52 @@ if (isset($_POST["task"]) && $_POST["task"] == "save") {
 	/*********** filtriranje i validacija polja ****************/
 	
     if (isset($_POST["email"]) && $_POST["email"] !== '') {
-		//Dodavanje parametara medju podatke u formi
+		
 		$formData["email"] = $_POST["email"];
 		
-		//Filtering 1
+		//Filtering 
 		$formData["email"] = trim($formData["email"]);
-		//Filtering 2
-		//Filtering 3
-		//Filtering 4
-		//...
 		
-		//Validation 2
-		//Validation 3
-		//Validation 4
-		//...
 		
 	} 
         
         if (isset($_POST["first_name"]) && $_POST["first_name"] !== '') {
-		//Dodavanje parametara medju podatke u formi
+		
 		$formData["first_name"] = $_POST["first_name"];
 		
-		//Filtering 1
+		//Filtering 
 		$formData["first_name"] = trim($formData["first_name"]);
-		//Filtering 2
-		//Filtering 3
-		//Filtering 4
-		//...
+                
+                if (mb_strlen($formData['first_name']) < 2) {
+                    
+                    $formErrors['first_name'][] = 'Ime ne moze biti manje od 2 karaktera';
+                }
+                
+                if (mb_strlen($formData['first_name']) > 20) {
+                    
+                    $formErrors['first_name'][] = 'Ime ne moze biti vece od 20 karaktera';
+                }
 		
-		//Validation 2
-		//Validation 3
-		//Validation 4
-		//...
 		
 	} 
         
         if (isset($_POST["last_name"]) && $_POST["last_name"] !== '') {
-		//Dodavanje parametara medju podatke u formi
+		
 		$formData["last_name"] = $_POST["last_name"];
 		
-		//Filtering 1
+		//Filtering 
 		$formData["last_name"] = trim($formData["last_name"]);
-		//Filtering 2
-		//Filtering 3
-		//Filtering 4
-		//...
+                
+                if (mb_strlen($formData['last_name']) < 2) {
+                    
+                    $formErrors['last_name'][] = 'Prezime ne moze biti manje od 2 karaktera';
+                }
+                
+                if (mb_strlen($formData['last_name']) > 20) {
+                    
+                    $formErrors['last_name'][] = 'Prezime ne moze biti vece od 20 karaktera';
+                }
 		
-		//Validation 2
-		//Validation 3
-		//Validation 4
-		//...
 		
 	} 
         
