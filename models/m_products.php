@@ -202,13 +202,13 @@ function productsFetchAllByCategoryByPage ($categoryId, $page, $rowsPerPage) {
             . "FROM `products` "
             . "RIGHT JOIN `categories` ON `products`.`category_id` = `categories`.`id` "
             . "LEFT JOIN `brands` ON `products`.`brand_id` = `brands`.`id` "
-            . "WHERE `products`.`category_id` = '" . dbEscape($categoryId). "'";
+            . "WHERE `products`.`category_id` = '" . dbEscape($categoryId). "' ";
     
     $limit = $rowsPerPage; 
     $offset = ($page - 1) * $rowsPerPage; 
     
     $query .= "LIMIT " . $limit . " OFFSET " . $offset; 
-
+    
     return dbFetchAll($query);
 }
 

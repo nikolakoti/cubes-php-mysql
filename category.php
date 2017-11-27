@@ -39,6 +39,9 @@ $totalRows = productsGetCountByCategory($category['id']);
 
 
 $totalPages = ceil($totalRows / $rowsPerPage);
+if ($totalPages < 1) {
+    $totalPages = 1;
+}
 
 if ($page < 1) {
 
@@ -47,7 +50,6 @@ if ($page < 1) {
 
     $page = $totalPages;
 }
-
 
 
 $products = productsFetchAllByCategoryByPage($category['id'], $page, $rowsPerPage);
